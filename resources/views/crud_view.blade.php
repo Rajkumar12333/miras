@@ -49,7 +49,14 @@
                                             <tr>
                                                 <td>{{$list['title']}}</td>
                                                 <td>{{$list['content']}}</td>
-                                               <td> <a href="{{ route('crud.edit_page', $list->id) }}">Edit</a></td>
+                                               <td> <a href="{{ route('crud.edit_page', $list->id) }}">Edit</a>
+                                               <form action="{{ route('crud.crud_destroy', $list->id) }}" method="post">
+                                                @csrf
+                                               <input type="hidden" name="id" value="{{ $list->id }}">
+                                               <input type="submit" name="submit" value="Delete">
+                                               </form></td>
+                                               
+
                                             </tr>
                                          @endforeach
                                         </tbody>
@@ -70,5 +77,17 @@
                 <!-- End row -->
             </div>
             <!-- End Contentbar -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    </script>
+@endif
 
 @endsection

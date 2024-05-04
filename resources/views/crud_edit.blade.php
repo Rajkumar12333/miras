@@ -40,18 +40,20 @@
                             </div>
                             <div class="card-body">
                                 <h6 class="card-subtitle">Basic form validation.</h6>
-                                <form class="form-validate" action="#" method="post">
+                                <form class="form-validate" action="{{ route('crud.update', ['id' => $crud_edit->id]) }}" method="post">
+                                    @csrf
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label" for="val-username">User ID <span class="text-danger">*</span></label>
                                         <div class="col-lg-6">
-                                            <input type="text" class="form-control" id="val-username" value="{{$crud_edit->title}}" ame="val-username" placeholder="Enter User ID">
+                                        <input type="hidden" name="id" value="{{ $crud_edit->id }}">
+                                            <input type="text" class="form-control" id="title" value="{{$crud_edit->title}}" name="title" placeholder="Enter User ID">
                                         </div>
                                     </div>
                                    
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label" for="val-suggestions">Description <span class="text-danger">*</span></label>
                                         <div class="col-lg-6">
-                                            <textarea class="form-control" id="val-suggestions"  name="val-suggestions" rows="5" placeholder="Enter Your Details.">{{$crud_edit->content}}</textarea>
+                                            <textarea class="form-control" id="content"  name="content" rows="5" placeholder="Enter Your Details.">{{$crud_edit->content}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">

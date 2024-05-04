@@ -21,4 +21,5 @@ Route::get('/crud-add-page', [CrudController::class, 'crud_add_page'])->name("cr
 Route::get('/crud/{id}/edit-page', [CrudController::class, 'crud_edit_page'])->name('crud.edit_page');
 
 Route::post('/crud-add', [CrudController::class, 'crud_add'])->name("crud.add");
-Route::post('/crud-update', [CrudController::class, 'crud_update'])->name("crud.update");
+Route::post('/{id}/crud-update', [CrudController::class, 'crud_update'])->name("crud.update");
+Route::post('/{id}/crud-delete', [CrudController::class, 'crud_destroy'])->name("crud.crud_destroy");
