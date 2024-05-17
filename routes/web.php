@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,8 @@ Route::get('/crud/{id}/edit-page', [CrudController::class, 'crud_edit_page'])->n
 // Route::get('/add_applicant', function () {
 //     return view('add_applicant');
 // })->name('add_applicant');
-Route::post('/add_applicant', 'DocumentController@store')->name('applicant.store');
+Route::get('/add_applicant_page', [DocumentController::class, 'add_page'])->name('applicant.add_page');
+Route::post('/add_applicant', [DocumentController::class, 'store'])->name('applicant.store');
 
 
 Route::post('/crud-add', [CrudController::class, 'crud_add'])->name("crud.add");
