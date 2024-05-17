@@ -34861,5 +34861,8 @@ table.focus-on tfoot tr.focused td {
     width: 100%;
   }
 }
+a.btn.btn-primary-rgba:hover {
+  color: #FFF;
+}
 
 /*# sourceMappingURL=style.css.map */
