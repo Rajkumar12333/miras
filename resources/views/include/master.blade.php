@@ -16,7 +16,11 @@
     <link href="{{ asset('assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet">
     <!-- Apex css -->
     <link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
     <!-- Slick css -->
+    
     <link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -43,13 +47,13 @@
                 <div class="navigationbar">
                     <ul class="vertical-menu">
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('index') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
                             </a>
                             
                         </li>
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('visa_tracking') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Tracking</span>
                             </a>
                             
@@ -204,7 +208,7 @@
                                     </div>
                                 </li>
                                 <li class="list-inline-item"><div class="widgetbar">
-                            <a href="{{ route('applicant.store') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
+                            <a href="{{ route('add_applicant') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
                         </div> </li>
                             </ul>
                         </div>
@@ -320,6 +324,19 @@
     <script src="{{ asset('assets/js/custom/custom-dashboard.js') }}"></script>
     <!-- Core js -->
     <script src="{{ asset('assets/js/core.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
     <!-- End js -->
 </body>
 

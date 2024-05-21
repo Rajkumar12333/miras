@@ -42,7 +42,7 @@
         </ul>
     </div>
 @endif
-                <form method="POST" action="{{ route('applicant.store') }}">
+                <form method="POST" action="#">
                 @csrf
                         <div class="form-group">
                             <label for="inputState">Total Document</label>
@@ -743,9 +743,12 @@
                                     <input class="form-check-input" type="checkbox" value="" id="passportCheck"
                                         name="passportCheck">
                                     <label class="form-check-label" for="passportCheck">Passport</label>
+                                    <div class="hidden">
+                                    <label class="form-check-label" for="passportCheck">Valitity Date:</label>
                                     <input type="date"
-                                        class="form-control border border-gray-300 rounded p-2 w-full my-2 hidden"
+                                        class="form-control border border-gray-300 rounded p-2 w-full my-2"
                                         id="passportInput" name="passportInput" placeholder="Enter Passport Details">
+                                        </div>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="photoCheck"
@@ -1230,6 +1233,7 @@
                                         name="addressProofCheck">
                                     <label class="form-check-label" for="addressProofCheck">Address Proof</label>
                                 </div>
+                            </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="remarks">Remarks</label>
@@ -1243,6 +1247,7 @@
                                 </div>
 
                             </div>
+                            
                             <div class="form-group">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -1251,7 +1256,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                      
+                            <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

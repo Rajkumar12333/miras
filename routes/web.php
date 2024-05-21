@@ -15,15 +15,16 @@ use App\Http\Controllers\CrudController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 Route::get('/crud-view-page', [CrudController::class, 'crud_view_page'])->name("crud.view_page");
 Route::get('/crud-add-page', [CrudController::class, 'crud_add_page'])->name("crud.add_page");
 Route::get('/crud/{id}/edit-page', [CrudController::class, 'crud_edit_page'])->name('crud.edit_page');
-// Route::get('/add_applicant', function () {
-//     return view('add_applicant');
-// })->name('add_applicant');
-Route::post('/add_applicant', 'DocumentController@store')->name('applicant.store');
-
+Route::get('/add_applicant', function () {
+    return view('add_applicant');
+})->name('add_applicant');
+Route::get('/visa_tracking',function () {
+    return view('visa_tracking');
+})->name('visa_tracking');
 
 Route::post('/crud-add', [CrudController::class, 'crud_add'])->name("crud.add");
 Route::post('/{id}/crud-update', [CrudController::class, 'crud_update'])->name("crud.update");
