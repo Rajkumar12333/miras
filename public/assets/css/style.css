@@ -28664,13 +28664,13 @@ mark {
 .btn-primary-rgba {
   background-color: rgba(0, 128, 255, 0.1);
   border: none;
-  color: #0080ff;
+  color: #0080ff !important;
 }
 
 .btn-primary-rgba:hover {
   background-color: #0080ff;
   border: none;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .btn-primary-rgba:focus {

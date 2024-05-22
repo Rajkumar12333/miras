@@ -73,7 +73,7 @@
                                 <img src="{{ asset('assets/images/svg-icon/advanced.svg') }}" class="img-fluid" alt="advanced"><span>Agent</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">                                
-                                <li><a href="advanced-ui-kits-image-crop.html">Add Agent</a></li>  
+                                <li><a href="{{ route('add_agent') }}">Add Agent</a></li>  
                             </ul>
                         </li>
                         <li>
@@ -208,7 +208,7 @@
                                     </div>
                                 </li>
                                 <li class="list-inline-item"><div class="widgetbar">
-                            <a href="{{ route('add_applicant') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
+                            <a href="{{ route('applicant.add_page') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
                         </div> </li>
                             </ul>
                         </div>
