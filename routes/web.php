@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AplicantController;
+use App\Http\Controllers\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,14 +34,14 @@ require __DIR__.'/auth.php';
 Route::get('/crud-view-page', [CrudController::class, 'crud_view_page'])->name("crud.view_page");
 Route::get('/crud-add-page', [CrudController::class, 'crud_add_page'])->name("crud.add_page");
 Route::get('/crud/{id}/edit-page', [CrudController::class, 'crud_edit_page'])->name('crud.edit_page');
-Route::get('/add_applicant', function () {
-    return view('add_applicant');
-})->name('add_applicant');
+// Route::get('/add_applicant', function () {
+//     return view('add_applicant');
+// })->name('add_applicant');
 Route::get('/visa_tracking',function () {
     return view('visa_tracking');
 })->name('visa_tracking');
-Route::get('/add_applicant_page', [DocumentController::class, 'add_page'])->name('applicant.add_page');
-Route::post('/add_applicant', [DocumentController::class, 'store'])->name('applicant.store');
+Route::get('/add_applicant_page', [AplicantController::class, 'add_page'])->name('applicant.add_page');
+Route::post('/add_applicant/store', [AplicantController::class, 'store'])->name('applicant.store');
 
 
 Route::post('/crud-add', [CrudController::class, 'crud_add'])->name("crud.add");

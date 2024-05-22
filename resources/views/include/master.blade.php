@@ -208,7 +208,7 @@
                                     </div>
                                 </li>
                                 <li class="list-inline-item"><div class="widgetbar">
-                            <a href="{{ route('add_applicant') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
+                            <a href="{{ route('applicant.add_page') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
                         </div> </li>
                             </ul>
                         </div>
