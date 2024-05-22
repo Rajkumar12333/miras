@@ -7,6 +7,8 @@ use App\Models\Applicant;
 use App\Models\Country;
 use App\Models\Category;
 use App\Models\Branch;
+use App\Models\Agent;
+
 class AplicantController extends Controller
 {
     //
@@ -14,13 +16,17 @@ class AplicantController extends Controller
         $Country=Country::all();
         $Category=Category::all();
         $Branch=Branch::all();
-        return view('add_applicant',compact('Country','Category','Branch'));
+       // $Agent=Agent::all();
+        $Agent = Agent::orderBy('agtname', 'asc')->get();
+        return view('add_applicant',compact('Country','Category','Branch','Agent'));
     }
     public function store(Request $request)
     {
+        $documents = $request->input('document');
+        foreach ($documents as $document) {
         $user = new Applicant([
-            // 'name' => $request->name,
-            // 'passportno'  => $request->passportno,
+            'name' =>$document['name'],
+            'passportno'  => $document['passportno'],
             'applicant_email'  => $request->applicant_email,
             'employeeno'  => $request->employeeno,
             'tavano'  => $request->tavano,
@@ -53,7 +59,7 @@ class AplicantController extends Controller
             'referer'  => $request->referer,
             'company'  => $request->company,
             'visaref'  => $request->visaref,
-            'dd'  => $request->dd,
+            'dd'  => $request->dd1,
             'reason'  => $request->reason,
             'internal_reason'  => $request->internal_reason,
             'barcode'  => $request->barcode,
@@ -66,6 +72,7 @@ class AplicantController extends Controller
 
         ]);
         $user->save();
+    }
         // Redirect back with success message
         return redirect()->back()->with('success', 'Document created successfully.');
     }

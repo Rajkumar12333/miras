@@ -68,12 +68,12 @@
                         <div id="dynamicFields" class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="applicantName">Applicant Name</label>
-                                <input type="text" class="form-control" id="applicantName" name="name[]"
+                                <input type="text" class="form-control" id="applicantName" name="document[0][name]"
                                     placeholder="Applicant Name">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="passportNumber">Passport No / Old Passport No</label>
-                                <input type="text" class="form-control" id="passportNumber" name="passportno[]"
+                                <input type="text" class="form-control" id="passportNumber" name="document[0][passportno]"
                                     placeholder="Passport No">
                             </div>
                         </div>
@@ -97,255 +97,9 @@
                             <div class="form-group col-md-6">
                                 <label for="agentName">Agent Name</label>
                                 <select id="agentName" class="form-control" name="agtid">
-                                    <option value="90" selected=""> ACIRA - BLR </option>
-                                    <option value="94"> GLOBE - MLR </option>
-                                    <option value="52"> KESARI - BLR </option>
-                                    <option value="63"> MATHA AIR - BLR </option>
-                                    <option value="55"> MAYUR WORLD </option>
-                                    <option value="96"> RAJVIHA </option>
-                                    <option value="69"> SEARS </option>
-                                    <option value="48"> SIMRAN </option>
-                                    <option value="486"> The Dreams Navigator</option>
-                                    <option value="284">Ace Travels-Mumbai</option>
-                                    <option value="437">Adhvaga Holidays Inc</option>
-                                    <option value="225">ADITYA TRAVEL LINES - BLR</option>
-                                    <option value="295">AEROJET</option>
-                                    <option value="169">AIRWING </option>
-                                    <option value="223">AKBAR - MLR</option>
-                                    <option value="461">AKBAR - MUMBAI</option>
-                                    <option value="30">AKBAR-BLR</option>
-                                    <option value="32">ALL ABOUT-BLR</option>
-                                    <option value="364">ALLWIN TOURS AND TRAVELS</option>
-                                    <option value="50">ALPHA - BLR </option>
-                                    <option value="472">ANARA Travel</option>
-                                    <option value="211">APPLIED MATERIALS</option>
-                                    <option value="463">ARIUS HOLIDAYS AND TRAVELS</option>
-                                    <option value="352">AROUND WORLD HOLIDAYS</option>
-                                    <option value="470">ARROWSOFT TRAVEL LINES</option>
-                                    <option value="496">ASD</option>
-                                    <option value="166">ATHITHI TRAVELS</option>
-                                    <option value="191">ATLURI </option>
-                                    <option value="469">ATWELL TRAVEL SERVICES PVT LTD</option>
-                                    <option value="259">BALMER LAWRIE-BANGALORE</option>
-                                    <option value="300">BALMER LAWRIE-HYDERABAD</option>
-                                    <option value="228">BCD HYDERABAD</option>
-                                    <option value="11">BCD Travels Bangalore</option>
-                                    <option value="432">BCD-MUMBAI</option>
-                                    <option value="10">BCD-SCHNEIDER</option>
-                                    <option value="406">BEATRIX-BLR </option>
-                                    <option value="29">BELEAST-BLR</option>
-                                    <option value="296">BENZ</option>
-                                    <option value="483">BERRY JOURNEYS</option>
-                                    <option value="357">BIRDS VACATIONSS</option>
-                                    <option value="168">BON VOYAGE</option>
-                                    <option value="401">BULK LIQUID</option>
-                                    <option value="9">Carlson Wagonwlit Travels Bangalore</option>
-                                    <option value="15">Carlson Wagonwlit Travels Hydrabad</option>
-                                    <option value="226">CEEBAN TRAVELS</option>
-                                    <option value="100">CISCO-BLR</option>
-                                    <option value="441">COMPANY TRAVEL-BLR</option>
-                                    <option value="384">CONCENTRIX DAKSH </option>
-                                    <option value="104">CONQUER-BLR</option>
-                                    <option value="294">CONTINENTAL</option>
-                                    <option value="292">CORPORATE TRAVELS</option>
-                                    <option value="494">CRIMSON HOLIDAYS LLP</option>
-                                    <option value="112">CRYSTAL HOLIDAY-BLR</option>
-                                    <option value="462">DE TRAVELLER.COM</option>
-                                    <option value="273">DEEPU TRAVELS</option>
-                                    <option value="331">DENTSU COMMUNICATIONS PVT.LTD</option>
-                                    <option value="489">DOCTOR PACK INDIA PRIVATE LIMITED</option>
-                                    <option value="345">DOVE TRAVELS WORLDWIDE</option>
-                                    <option value="443">DREAMSCAPETOURS</option>
-                                    <option value="45">EARTHWALK YATRAS</option>
-                                    <option value="488">ECLAT TOURS AND TRAVELS</option>
-                                    <option value="445">ETHEREAL MACHINES PVT LTD</option>
-                                    <option value="355">FANTASY AIR TRAVELS</option>
-                                    <option value="381">FANTASYA TOURS &amp;TRAVELS</option>
-                                    <option value="107">FLORA MLR</option>
-                                    <option value="447">FLY MERIDIAN</option>
-                                    <option value="466">FLYNN THOMAS (TOOR SEEKERS)</option>
-                                    <option value="467">FLYNN THOMAS (TOOR SEEKERS)</option>
-                                    <option value="130">FORTUNE-BLR</option>
-                                    <option value="409">FREEDOM HOLIDAYS</option>
-                                    <option value="490">FUELIFE EXPLORERS</option>
-                                    <option value="216">GILPIN TRAVELS-</option>
-                                    <option value="422">Girikand Travels</option>
-                                    <option value="290">GITANJALI TRAVLES</option>
-                                    <option value="476">GO SMILED TRAVEL</option>
-                                    <option value="293">Hexad Infosoft-BLR</option>
-                                    <option value="264">HITESH HOLIDAYS</option>
-                                    <option value="468">HMA TRAVEL</option>
-                                    <option value="260">HOLIDAY COMPANION</option>
-                                    <option value="279">Hyades Tours</option>
-                                    <option value="120">I-TRIP HOLIDAYS-BLR</option>
-                                    <option value="421">IN ORBIT TOURS</option>
-                                    <option value="349">INDUS TRAVELLER BLR</option>
-                                    <option value="231">INNOVATIVE TOURS AND TRAVELS</option>
-                                    <option value="363">INSUMUST.COM</option>
-                                    <option value="341">INTIME TEC</option>
-                                    <option value="386">ITL TOURS AND TRAVELS</option>
-                                    <option value="217">J.V TRAVEL</option>
-                                    <option value="314">JAI HOLIDAYS</option>
-                                    <option value="181">JAY GROUPS</option>
-                                    <option value="479">JCARE TOURS &amp; TRAVEL</option>
-                                    <option value="232">JOHNSON-BLR</option>
-                                    <option value="99">KEANE-BLR</option>
-                                    <option value="215">KELTECH-BLR</option>
-                                    <option value="487">KERALA TRAVELS CHENNAI</option>
-                                    <option value="23">KESARI HYDRABAD</option>
-                                    <option value="198">KINGSWAY-BLR</option>
-                                    <option value="33">KISHORE SIR</option>
-                                    <option value="407">KUONI TRAVELS - HYD</option>
-                                    <option value="420">KUONI-TVS MOTOR</option>
-                                    <option value="213">LEPASSAGE</option>
-                                    <option value="387">LIFERAY</option>
-                                    <option value="340">MAGELLAN</option>
-                                    <option value="208">MANIPAL TRAVELS </option>
-                                    <option value="148">MCAFEE BANGALORE</option>
-                                    <option value="214">MCKINSEY</option>
-                                    <option value="390">Mico Bosch - Personal</option>
-                                    <option value="255">MICO BOSCH-BLR</option>
-                                    <option value="220">MICROSOFT</option>
-                                    <option value="371">MINE TRAVELS</option>
-                                    <option value="444">MIRAS-CHENNAI</option>
-                                    <option value="416">MORGAN</option>
-                                    <option value="164">MSD CHENNAI</option>
-                                    <option value="262">MSTAR TOURS AND MORES</option>
-                                    <option value="471">MY TRAVEL MAP</option>
-                                    <option value="347">MY TRAVEL NEST</option>
-                                    <option value="286">NEW AIRWING -BELGAUM</option>
-                                    <option value="455">NEW FLY WING TOURS &amp; TRAVELS</option>
-                                    <option value="205">NN TRAVEL-BLR</option>
-                                    <option value="235">NORTH STAR-BLR</option>
-                                    <option value="438">OASIS-BLR</option>
-                                    <option value="429">OCEANUS HOLIDAYS PVT LTD</option>
-                                    <option value="272">PATILS- ALPHA-BLR</option>
-                                    <option value="298">Pegasus- Adyar</option>
-                                    <option value="219">PEGASUS-EGMORE</option>
-                                    <option value="102">PERFECT GETAWAYS-BLR</option>
-                                    <option value="394">PHASE 1 - BLR</option>
-                                    <option value="281">PREM TRAVEL &amp; TOURS</option>
-                                    <option value="475">PREMIA TRAVELS</option>
-                                    <option value="297">PRIME INDIA COCHIN TOURS AND TRAVELS</option>
-                                    <option value="465">PRIYADARSHINI AIR WINGS PVT LTD</option>
-                                    <option value="353">Pro tours and travels</option>
-                                    <option value="423">RAASTA HOLIDAYS</option>
-                                    <option value="440">reedmackay</option>
-                                    <option value="392">ROBERT BOSCH - BEL</option>
-                                    <option value="393">ROBERT BOSCH - BMH</option>
-                                    <option value="391">ROBERT BOSCH - EC</option>
-                                    <option value="396">ROBERT BOSCH - LONG TERM</option>
-                                    <option value="400">ROBERT BOSCH - PRE APPROVAL</option>
-                                    <option value="256">ROBERT BOSCH- KOR</option>
-                                    <option value="21">ROBERT BOSCH-COIMBATORE</option>
-                                    <option value="278">ROBERT BOSCH-PERSONAL</option>
-                                    <option value="408">ROHAN ENTERPRISES</option>
-                                    <option value="442">ROOPA-BLR</option>
-                                    <option value="243">ROSY MICROSOFT</option>
-                                    <option value="453">ROUND THE WORLD TRAVEL &amp; TOURS</option>
-                                    <option value="288">S V TRAVELITE</option>
-                                    <option value="343">SAFIYA TRAVELS </option>
-                                    <option value="454">SAMEERA-HYD</option>
-                                    <option value="473">SANNCIA HOLIDAY</option>
-                                    <option value="201">SATELLITE TRAVELS -BLR</option>
-                                    <option value="435">Sathianathan</option>
-                                    <option value="190">SB INNTEL-BLR</option>
-                                    <option value="485">SEG AUTOMOTIVE INDIA PVT LTD</option>
-                                    <option value="433">SELFI TRIP</option>
-                                    <option value="41">SHALOM-BLR</option>
-                                    <option value="460">SHANKAR - TOT</option>
-                                    <option value="183">SHREE AMARAGIRI TRAVEL POINT</option>
-                                    <option value="380">SIGMA </option>
-                                    <option value="474">SIGNATURE TRAVEL</option>
-                                    <option value="404">SILICAN FOREX &amp; TRAVELS</option>
-                                    <option value="446">SKYLINES TOURS &amp; TRAVELS</option>
-                                    <option value="360">Smart Travel Solutions</option>
-                                    <option value="42">SNEHA-BLR</option>
-                                    <option value="398">SPICETRIP</option>
-                                    <option value="25">SRI SAI HYDRABAD</option>
-                                    <option value="230">ST MICRO ELECTRONICS</option>
-                                    <option value="425">SUN TOURISM INTERNATIONAL</option>
-                                    <option value="234">T C TRAVELS</option>
-                                    <option value="108">Taffles</option>
-                                    <option value="411">TAKE A BREAK</option>
-                                    <option value="495">Test</option>
-                                    <option value="448">THE HOLIDAY PLANNERS</option>
-                                    <option value="348">TOGETHER TOURISM</option>
-                                    <option value="239">TOT-MYSORE</option>
-                                    <option value="464">TOURTIME</option>
-                                    <option value="110">TRANSITY-BLR</option>
-                                    <option value="106">TRAVEL GLOBE-BLR</option>
-                                    <option value="258">TRAVEL 4 SEASONS</option>
-                                    <option value="187">TRAVEL AIR- BLR</option>
-                                    <option value="417">TRAVEL ARCADE-BLR</option>
-                                    <option value="369">Travel Castle </option>
-                                    <option value="241">TRAVEL CO-ORDINATOR</option>
-                                    <option value="402">TRAVEL CROFT / POSHMILES</option>
-                                    <option value="246">TRAVEL DOOR</option>
-                                    <option value="196">TRAVEL EXPLORE-BLR</option>
-                                    <option value="413">TRAVEL ITCH</option>
-                                    <option value="449">TRAVEL LOKA</option>
-                                    <option value="431">TRAVEL MANAGER HOLIDAYS PVT LTD</option>
-                                    <option value="359">TRAVEL MASTERS</option>
-                                    <option value="338">TRAVEL N LEISURE</option>
-                                    <option value="265">TRAVEL NEXT- MYSORE</option>
-                                    <option value="212">TRAVEL POOL</option>
-                                    <option value="282">TRAVEL SMART-HYDERABAD</option>
-                                    <option value="456">TRAVEL VISA EXPERTS-BLR</option>
-                                    <option value="31">TRAVELLERS-CHOICE-BLR</option>
-                                    <option value="242">TRAWELL ME TRAVELS</option>
-                                    <option value="339">TRIP TOE TRAVELS</option>
-                                    <option value="450">TRIPEUR</option>
-                                    <option value="43">TRIWAY </option>
-                                    <option value="207">TRMN </option>
-                                    <option value="115">TYCOON</option>
-                                    <option value="233">UAE XCHANGE BLR</option>
-                                    <option value="358">UNIGLOBE</option>
-                                    <option value="372">UNIQ TRAVELLER</option>
-                                    <option value="37">UNITED TRAVELS TRIVANDRUM</option>
-                                    <option value="27">UNITEDTRAVELSERVICES</option>
-                                    <option value="254">UVS-ACE TRAVELS</option>
-                                    <option value="250">UVS-Balaji</option>
-                                    <option value="252">UVS-HiAce</option>
-                                    <option value="253">UVS-Jetsave</option>
-                                    <option value="251">UVS-Murugan</option>
-                                    <option value="249">UVS-trvelpoint</option>
-                                    <option value="193">VACATIONAL HOLIDAYS</option>
-                                    <option value="299">Vaishnavi Travels</option>
-                                    <option value="285">VALSPAR</option>
-                                    <option value="218">VASWANI-BLR</option>
-                                    <option value="457">VEGAA VACATIONS PVT LTD </option>
-                                    <option value="301">VIA.COM</option>
-                                    <option value="172">VICEREGAL TRAVELS</option>
-                                    <option value="89">VISA CONSULTANCY - MUM </option>
-                                    <option value="354">VOYAGE WORLD</option>
-                                    <option value="410">VRUDDHI TRAVELS</option>
-                                    <option value="195">VS TRAVELS-BLR</option>
-                                    <option value="188">WALK IN CLIENT - BLR</option>
-                                    <option value="452">WHATFIX</option>
-                                    <option value="436">WHITEFIELD HOLIDAYS</option>
-                                    <option value="383">WINDSTAR HOLIDAYS</option>
-                                    <option value="451">WORLD VISION HOLIDAYS</option>
-                                    <option value="366">zAMEX HCL</option>
-                                    <option value="16">ZBALMER LAWRIE CHENNAI </option>
-                                    <option value="14">ZBCD CHENNAI </option>
-                                    <option value="167">ZBCD TRIVANDRUM</option>
-                                    <option value="13">ZCarlson Wagonwlit Travels Chennai</option>
-                                    <option value="176">ZCOLORFUL VACATION</option>
-                                    <option value="44">ZCOMFORT LEISURE</option>
-                                    <option value="170">ZDECCAN HOLIDAYS - BLR</option>
-                                    <option value="158">ZFORD CHENNAI</option>
-                                    <option value="133">ZFRONTIER HOLIDAYS</option>
-                                    <option value="131">ZGLOBE FOREX-BLR</option>
-                                    <option value="117">ZHOLIDAY DREAMS</option>
-                                    <option value="182">ZINDIA AND WORLD</option>
-                                    <option value="186">ZION-BLR</option>
-                                    <option value="132">ZJETSAVE DELHI GE ACCOUNT</option>
-                                    <option value="34">ZKEANECHENNAI</option>
-                                    <option value="162">ZKPMG CHENNAI</option>
-                                    <option value="160">ZNOKIA CHENNAI</option>
-                                    <option value="180">ZTRAVEL FRIEND -BLR</option>
-                                    <option value="171">ZTRAVEL SERVICES</option>
+                                    @foreach($Agent as $agent)
+                                    <option value="{{$agent->id}}">{{$agent->agtname}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -434,7 +188,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="mobileNumber">Mobile Number</label>
-                                <input type="text" class="form-control" id="number" name="mobile_number"
+                                <input type="text" class="form-control" id="number" name="number"
                                     placeholder="Mobile Number">
                             </div>
                             <div class="form-group col-md-6">
@@ -1027,44 +781,93 @@
 
 </script>
 <script>
+    // document.getElementById('inputState').addEventListener('change', function () {
+    //     const count = this.value;
+    //     const dynamicFields = document.getElementById('dynamicFields');
+    //     dynamicFields.innerHTML = ''; // Clear previous fields
+
+    //     for (let i = 0; i < count; i++) {
+    //         const fieldSet = document.createElement('div');
+    //         fieldSet.className = 'form-row';
+
+    //         const nameDiv = document.createElement('div');
+    //         nameDiv.className = 'form-group col-md-12 mx-2 px-2';
+    //         const nameLabel = document.createElement('label');
+    //         nameLabel.className = 'block text-gray-700';
+    //         nameLabel.textContent = `Applicant Name ${i + 1}`;
+    //         const nameInput = document.createElement('input');
+    //         nameInput.type = 'text';
+    //         nameInput.className = 'form-control border border-gray-300 rounded p-2 w-full';
+    //         nameInput.placeholder = `Applicant Name ${i + 1}`;
+    //         nameDiv.appendChild(nameLabel);
+    //         nameDiv.appendChild(nameInput);
+
+    //         const passportDiv = document.createElement('div');
+    //         passportDiv.className = 'form-group col-md-12 mx-2 px-2';
+    //         const passportLabel = document.createElement('label');
+    //         passportLabel.className = 'block text-gray-700';
+    //         passportLabel.textContent = `Passport No / Old Passport No ${i + 1}`;
+    //         const passportInput = document.createElement('input');
+    //         passportInput.type = 'text';
+    //         passportInput.className = 'form-control border border-gray-300 rounded p-2 w-full';
+    //         passportInput.placeholder = `Passport No ${i + 1}`;
+    //         passportDiv.appendChild(passportLabel);
+    //         passportDiv.appendChild(passportInput);
+
+    //         fieldSet.appendChild(nameDiv);
+    //         fieldSet.appendChild(passportDiv);
+    //         dynamicFields.appendChild(fieldSet);
+    //     }
+    // });
+
     document.getElementById('inputState').addEventListener('change', function () {
-        const count = this.value;
-        const dynamicFields = document.getElementById('dynamicFields');
-        dynamicFields.innerHTML = ''; // Clear previous fields
+    const count = parseInt(this.value, 10);
+    const dynamicFields = document.getElementById('dynamicFields');
+    dynamicFields.innerHTML = ''; // Clear previous fields
 
-        for (let i = 0; i < count; i++) {
-            const fieldSet = document.createElement('div');
+    for (let i = 0; i < count; i++) {
+        // Create a new form-row div for every two input pairs
+        if (i % 2 === 0) {
+            var fieldSet = document.createElement('div');
             fieldSet.className = 'form-row';
-
-            const nameDiv = document.createElement('div');
-            nameDiv.className = 'form-group col-md-12 mx-2 px-2';
-            const nameLabel = document.createElement('label');
-            nameLabel.className = 'block text-gray-700';
-            nameLabel.textContent = `Applicant Name ${i + 1}`;
-            const nameInput = document.createElement('input');
-            nameInput.type = 'text';
-            nameInput.className = 'form-control border border-gray-300 rounded p-2 w-full';
-            nameInput.placeholder = `Applicant Name ${i + 1}`;
-            nameDiv.appendChild(nameLabel);
-            nameDiv.appendChild(nameInput);
-
-            const passportDiv = document.createElement('div');
-            passportDiv.className = 'form-group col-md-12 mx-2 px-2';
-            const passportLabel = document.createElement('label');
-            passportLabel.className = 'block text-gray-700';
-            passportLabel.textContent = `Passport No / Old Passport No ${i + 1}`;
-            const passportInput = document.createElement('input');
-            passportInput.type = 'text';
-            passportInput.className = 'form-control border border-gray-300 rounded p-2 w-full';
-            passportInput.placeholder = `Passport No ${i + 1}`;
-            passportDiv.appendChild(passportLabel);
-            passportDiv.appendChild(passportInput);
-
-            fieldSet.appendChild(nameDiv);
-            fieldSet.appendChild(passportDiv);
             dynamicFields.appendChild(fieldSet);
         }
-    });
+
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'form-group col-md-6';
+        const nameLabel = document.createElement('label');
+        nameLabel.setAttribute('for', `applicantName${i}`);
+        nameLabel.className = 'block text-gray-700';
+        nameLabel.textContent = `Applicant Name ${i + 1}`;
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.className = 'form-control border border-gray-300 rounded p-2 w-full';
+        nameInput.name = `document[${i}][name]`;  // Unique name for each input
+        nameInput.id = `applicantName${i}`;
+        nameInput.placeholder = `Applicant Name ${i + 1}`;
+        nameDiv.appendChild(nameLabel);
+        nameDiv.appendChild(nameInput);
+
+        const passportDiv = document.createElement('div');
+        passportDiv.className = 'form-group col-md-6';
+        const passportLabel = document.createElement('label');
+        passportLabel.setAttribute('for', `passportNumber${i}`);
+        passportLabel.className = 'block text-gray-700';
+        passportLabel.textContent = `Passport No / Old Passport No ${i + 1}`;
+        const passportInput = document.createElement('input');
+        passportInput.type = 'text';
+        passportInput.className = 'form-control border border-gray-300 rounded p-2 w-full';
+        passportInput.name = `document[${i}][passportno]`;  // Unique name for each input
+        passportInput.id = `passportNumber${i}`;
+        passportInput.placeholder = `Passport No ${i + 1}`;
+        passportDiv.appendChild(passportLabel);
+        passportDiv.appendChild(passportInput);
+
+        fieldSet.appendChild(nameDiv);
+        fieldSet.appendChild(passportDiv);
+    }
+});
+
 
 </script>
 @endsection
