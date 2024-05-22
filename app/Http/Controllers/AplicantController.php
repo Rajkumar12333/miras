@@ -12,6 +12,12 @@ use App\Models\Agent;
 class AplicantController extends Controller
 {
     //
+    public function visa_tracking(){
+      
+        $view = Applicant::orderBy('createdon', 'desc')->get();
+       
+        return view('visa_tracking',compact('view'));
+    }
     public function add_page(Request $request){
         $Country=Country::all();
         $Category=Category::all();
@@ -76,4 +82,9 @@ class AplicantController extends Controller
         // Redirect back with success message
         return redirect()->back()->with('success', 'Document created successfully.');
     }
+    public function destroy(Request $request,$id){
+                $blog = Applicant::findOrFail($id);
+                $blog->delete();
+                return redirect()->route('visa_tracking')->with('success', 'Record deleted successfully');
+}
 }

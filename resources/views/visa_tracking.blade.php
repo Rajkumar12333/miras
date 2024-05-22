@@ -55,7 +55,42 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($view as $views)
                                         <tr>
+                                            <td>BLR-{{$views->id}}</td>
+                                            <td>{{$views->passportno}} </td>
+                                                <td>{{$views->name}}</td>
+                                                <td>{{$views->company}}</td>
+                                                <td>{{$views->country}}</td>
+                                                <td>{{$views->id}}</td>
+                                                <td>2024/05/14</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>1</td>
+                                                <td>{{$views->status}} </td>
+                                                <td></td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
+                                                            type="button"
+                                                            class="tabledit-edit-button btn btn-sm btn-info"
+                                                            style="float: none; margin: 5px;"><span
+                                                                class="ti-pencil"></span></button>
+                                                                
+                                                                <form action="{{ route('visa_tracking.destroy', $views->id) }}" class="m-0" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $views->id }}">
+                        <button type="submit"
+                        class="tabledit-delete-button btn btn-sm btn-info"
+                        style="float: none; margin: 5px;"><span
+                            class="ti-trash"></span></button>
+                        </form>
+                    </div>
+                                                </td>
+                                                <td></td>
+                                        </tr>
+                                        @endforeach
+                                        <!-- <tr>
                                             <td>BLR-2756</td>
                                             <td>X8810112/L8885473; </td>
                                                 <td>GANESHILAL SUDHIR KUMAR ;</td>
@@ -158,33 +193,7 @@
                                                                 class="ti-trash"></span></button></div>
                                                 </td>
                                                 <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BLR-2756</td>
-                                            <td>X8810112/L8885473; </td>
-                                                <td>GANESHILAL SUDHIR KUMAR ;</td>
-                                                <td></td>
-                                                <td>United States of America</td>
-                                                <td>SHANKAR - TOT</td>
-                                                <td>2024/05/14</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td>SUBMITTED </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
-                                                            class="tabledit-delete-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
-                                                </td>
-                                                <td></td>
-                                        </tr>
+                                        </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -194,3 +203,16 @@
        
     </div>
     @endsection
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    </script>
+  
+    @endif

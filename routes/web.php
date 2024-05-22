@@ -14,7 +14,7 @@ use App\Http\Controllers\DocumentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::post('/{id}/visa_tracking-delete', [AplicantController::class, 'destroy'])->name("visa_tracking.destroy");
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
@@ -37,9 +37,10 @@ Route::get('/crud/{id}/edit-page', [CrudController::class, 'crud_edit_page'])->n
 // Route::get('/add_applicant', function () {
 //     return view('add_applicant');
 // })->name('add_applicant');
-Route::get('/visa_tracking',function () {
-    return view('visa_tracking');
-})->name('visa_tracking');
+// Route::get('/visa_tracking',function () {
+//     return view('visa_tracking');
+// })->name('visa_tracking');
+Route::get('/visa_tracking', [AplicantController::class, 'visa_tracking'])->name('visa_tracking');
 Route::get('/add_agent',function () {
     return view('add_agent');
 })->name('add_agent');
