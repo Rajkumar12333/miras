@@ -32,6 +32,33 @@
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    
+    <style>
+        .datepicker-dropdown {
+            background-color: #f8f9fa;
+        }
+        .datepicker-days .datepicker-switch,
+        .datepicker-months .datepicker-switch,
+        .datepicker-years .datepicker-switch {
+            font-size: 1rem;
+            color: #495057;
+        }
+        .datepicker-days .table-condensed tbody .today,
+        .datepicker-days .table-condensed tbody .active {
+            background-color: #007bff; /* Bootstrap primary color */
+            border-radius: 50%;
+        }
+        .datepicker-days .table-condensed tbody tr:hover td,
+        .datepicker-days .table-condensed tbody tr:hover td.day {
+            background-color: rgba(0, 123, 255, 0.1); /* Lighter shade of primary color */
+            border-radius: 50%;
+        }
+        .datepicker-footer {
+            font-size: 0.875rem;
+            color: #6c757d; /* Bootstrap secondary color */
+        }
+    </style>
+
     <!-- End css -->
 </head>
 <body class="vertical-layout">    
@@ -271,7 +298,7 @@
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                                                 <div class="dropdown-item">
                                                     <div class="profilename">
-                                                      <h5>John Doe</h5>
+                                                    <h5>{{ Auth::user()->name }}</h5>
                                                     </div>
                                                 </div>
                                                 <div class="userbox">
@@ -280,7 +307,14 @@
                                                             <a href="#" class="profile-icon"><img src="{{ asset('assets/images/svg-icon/user.svg') }}" class="img-fluid" alt="user">Change Password</a>
                                                         </li>                                                        
                                                         <li class="media dropdown-item">
-                                                            <a href="#" class="profile-icon"><img src="{{ asset('assets/images/svg-icon/logout.svg') }}" class="img-fluid" alt="logout">Logout</a>
+                                                            <!-- <a href="#" class="profile-icon"><img src="{{ asset('assets/images/svg-icon/logout.svg') }}" class="img-fluid" alt="logout">Logout</a> -->
+                                                            
+    <form method="POST" action="{{ route('logout') }}">
+                                                            @csrf
+                                                            <button class="profile-icon"><img src="{{ asset('assets/images/svg-icon/logout.svg') }}" class="img-fluid" alt="logout">Logout</button>
+                                                            </form>
+
+
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -350,5 +384,17 @@
     <!-- End js -->
 </body>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
 
 </html>

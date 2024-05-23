@@ -7,16 +7,19 @@
             <h4 class="page-title">Visa Tracking</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Visa Tracking</a></li>
 
                 </ol>
             </div>
         </div>
         <div class="col-md-4 col-lg-4">
-            <div class="widgetbar">
+            <!-- <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>
+            </div> -->
+            <div class="widgetbar">
+                            <a href="{{ route('applicant.add_page') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Applicant</a>
+                        </div> 
         </div>
     </div>
 </div>
@@ -57,143 +60,54 @@
                                         <tbody>
                                             @foreach($view as $views)
                                         <tr>
-                                            <td>BLR-{{$views->id}}</td>
+                                            <td>
+                                            @php
+                                                try {
+                                                    $short_name = \App\Models\Branch::findOrFail($views->branchid);
+                                                } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+                                                    $short_name = null; 
+                                                }
+                                            @endphp
+                                                
+                                                {{$short_name->shortname}}-{{$views->id}}</td>
                                             <td>{{$views->passportno}} </td>
                                                 <td>{{$views->name}}</td>
                                                 <td>{{$views->company}}</td>
                                                 <td>{{$views->country}}</td>
-                                                <td>{{$views->id}}</td>
-                                                <td>2024/05/14</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td>{{$views->status}} </td>
-                                                <td></td>
                                                 <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button>
-                                                                
-                                                                <form action="{{ route('visa_tracking.destroy', $views->id) }}" class="m-0" method="post">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $views->id }}">
-                        <button type="submit"
-                        class="tabledit-delete-button btn btn-sm btn-info"
-                        style="float: none; margin: 5px;"><span
-                            class="ti-trash"></span></button>
-                        </form>
-                    </div>
+                                                @php
+                                                    try {
+                                                        $agent_name = \App\Models\Agent::findOrFail($views->agtid);
+                                                    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+                                                        $agent_name = null; 
+                                                    }
+                                                @endphp
+                                                @if(!empty($agent_name))
+                                                {{$agent_name->agtname}}
+                                                @endif
                                                 </td>
-                                                <td></td>
+                                                <td>{{$views->rcddate}}</td>
+                                                <td>{{$views->subdate}}</td>
+                                                <td>{{$views->collectdate}}</td>
+                                                <td>{{$views->senton}}</td>
+                                                <td>{{$views->doc}}</td>
+                                                <td>{{$views->appt_status}} </td>
+                                                <td>{{$views->dd}}</td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm" style="float: none;">
+                                                   
+                                                        <a href="{{ route('visa_tracking.edit_page', $views->id) }}" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"> <span class="ti-pencil"></span> </a>
+                                                        <form action="{{ route('visa_tracking.destroy', $views->id) }}" class="m-0" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $views->id }}">
+                                                        <button type="submit" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                                <td>{{$views->bill}}</td>
                                         </tr>
                                         @endforeach
-                                        <!-- <tr>
-                                            <td>BLR-2756</td>
-                                            <td>X8810112/L8885473; </td>
-                                                <td>GANESHILAL SUDHIR KUMAR ;</td>
-                                                <td></td>
-                                                <td>United States of America</td>
-                                                <td>SHANKAR - TOT</td>
-                                                <td>2024/05/14</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td>SUBMITTED </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
-                                                            class="tabledit-delete-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
-                                                </td>
-                                                <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BLR-2756</td>
-                                            <td>X8810112/L8885473; </td>
-                                                <td>GANESHILAL SUDHIR KUMAR ;</td>
-                                                <td></td>
-                                                <td>United States of America</td>
-                                                <td>SHANKAR - TOT</td>
-                                                <td>2024/05/14</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td>SUBMITTED </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
-                                                            class="tabledit-delete-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
-                                                </td>
-                                                <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BLR-2756</td>
-                                            <td>X8810112/L8885473; </td>
-                                                <td>GANESHILAL SUDHIR KUMAR ;</td>
-                                                <td></td>
-                                                <td>United States of America</td>
-                                                <td>SHANKAR - TOT</td>
-                                                <td>2024/05/14</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td>SUBMITTED </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
-                                                            class="tabledit-delete-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
-                                                </td>
-                                                <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BLR-2756</td>
-                                            <td>X8810112/L8885473; </td>
-                                                <td>GANESHILAL SUDHIR KUMAR ;</td>
-                                                <td></td>
-                                                <td>United States of America</td>
-                                                <td>SHANKAR - TOT</td>
-                                                <td>2024/05/14</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>1</td>
-                                                <td>SUBMITTED </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
-                                                            class="tabledit-delete-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
-                                                </td>
-                                                <td></td>
-                                        </tr> -->
+                                       
                                         </tbody>
                                     </table>
                                 </div>
@@ -202,7 +116,6 @@
                     </div>
        
     </div>
-    @endsection
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if(session('success'))
     <script>
@@ -216,3 +129,4 @@
     </script>
   
     @endif
+    @endsection

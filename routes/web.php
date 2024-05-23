@@ -14,14 +14,21 @@ use App\Http\Controllers\DocumentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/{id}/visa_tracking-update', [AplicantController::class, 'update'])->name("visa_tracking.update");
+Route::get('/visa_tracking/{id}/edit-page', [AplicantController::class, 'edit_page'])->name('visa_tracking.edit_page');
+Route::get('/dashboard', function () {
+    return redirect()->route('visa_tracking');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 Route::post('/{id}/visa_tracking-delete', [AplicantController::class, 'destroy'])->name("visa_tracking.destroy");
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
