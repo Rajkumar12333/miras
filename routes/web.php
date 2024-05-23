@@ -47,6 +47,45 @@ Route::get('/add_agent',function () {
 Route::get('/list_agent',function () {
     return view('list_agent');
 })->name('list_agent');
+Route::get('/update_mail',function () {
+    return view('update_mail');
+})->name('update_mail');
+Route::get('/fee_mail',function () {
+    return view('fee_mail');
+})->name('fee_mail');
+Route::get('/news',function () {
+    return view('news');
+})->name('news');
+Route::get('/add_news',function () {
+    return view('add_news');
+})->name('add_news');
+Route::get('/visa_form',function () {
+    return view('visa_form');
+})->name('visa_form');
+Route::get('/add_visa',function () {
+    return view('add_visa');
+})->name('add_visa');
+Route::get('/add_visa_info',function () {
+    return view('add_visa_info');
+})->name('add_visa_info');
+Route::get('/visa_info',function () {
+    return view('visa_info');
+})->name('visa_info');
+Route::get('/add_country_info',function () {
+    return view('add_country_info');
+})->name('add_country_info');
+Route::get('/country_info',function () {
+    return view('country_info');
+})->name('country_info');
+Route::get('/add_company',function () {
+    return view('add_company');
+})->name('add_company');
+Route::get('/company_info',function () {
+    return view('company_info');
+})->name('company_info');
+Route::get('/add_ticker',function () {
+    return view('add_ticker');
+})->name('add_ticker');
 Route::get('/add_applicant_page', [AplicantController::class, 'add_page'])->name('applicant.add_page');
 Route::post('/add_applicant/store', [AplicantController::class, 'store'])->name('applicant.store');
 

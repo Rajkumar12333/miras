@@ -19,8 +19,13 @@
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
-    <!-- Slick css -->
-    
+<!-- include libraries(jQuery, bootstrap) -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -63,8 +68,8 @@
                                 <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"><span>Mail</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="javaScript:void();">Update Mail</a></li>
-                                <li><a href="javaScript:void();">Fees Mail</a></li>
+                                <li><a href="{{ route('update_mail') }}">Update Mail</a></li>
+                                <li><a href="{{ route('fee_mail') }}">Fees Mail</a></li>
                                 <li><a href="javaScript:void();">Visa status</a></li>
                             </ul>
                         </li>
@@ -77,19 +82,19 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('news') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>News</span>
                             </a>
                             
                         </li>
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('visa_form') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Form</span>
                             </a>
                             
                         </li>
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('visa_info') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Info</span>
                             </a>
                         </li>
@@ -102,12 +107,12 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('country_info') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Country Info</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('company_info') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Company Info</span>
                             </a>
                         </li>
@@ -117,12 +122,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javaScript:void();">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Holidays</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javaScript:void();">
+                            <a href="{{ route('add_ticker') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Ticker</span>
                             </a>
                         </li>
@@ -322,6 +322,11 @@
     <script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
     <!-- Custom Dashboard js -->   
     <script src="{{ asset('assets/js/custom/custom-dashboard.js') }}"></script>
+    <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script>
+    <!-- Wysiwig js -->
+    <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script>
+    <!-- Summernote JS -->
+    <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <!-- Core js -->
     <script src="{{ asset('assets/js/core.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
