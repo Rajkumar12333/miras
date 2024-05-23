@@ -58,6 +58,12 @@
                             
                         </li>
                         <li>
+                            <a href="{{ route('users') }}">
+                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Users</span>
+                            </a>
+                            
+                        </li>
+                        <li>
                             <a href="{{ route('visa_tracking') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Tracking</span>
                             </a>
@@ -131,12 +137,11 @@
                               <img src="{{ asset('assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Other Services</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="apps-calender.html">Interview</a></li>
-                                <li><a href="apps-chat.html">Deleted</a></li> 
-                                <li><a href="apps-kanban-board.html">Entry</a></li>
-                                <li><a href="apps-onboarding-screens.html">Visa Fees</a></li>
-                                <li><a href="apps-onboarding-screens.html">Company Bill</a></li>
-                                <li><a href="apps-onboarding-screens.html">Courier Tab</a></li>
+                                <li><a href="{{ route('interview') }}">Interview</a></li>
+                                <li><a href="{{ route('delete_entry') }}">Deleted Entry</a></li>
+                                <li><a href="{{ route('company_bill') }}">Visa Fees</a></li>
+                                <li><a href="{{ route('company_bill') }}">Company Bill</a></li>
+                                <li><a href="{{ route('courier') }}">Courier Tab</a></li>
                             </ul>
                         </li>
                                                                 

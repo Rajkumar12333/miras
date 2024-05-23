@@ -16,7 +16,7 @@ use App\Http\Controllers\DocumentController;
 */
 Route::post('/{id}/visa_tracking-delete', [AplicantController::class, 'destroy'])->name("visa_tracking.destroy");
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name('index');
 
 Route::get('/dashboard', function () {
@@ -86,6 +86,27 @@ Route::get('/company_info',function () {
 Route::get('/add_ticker',function () {
     return view('add_ticker');
 })->name('add_ticker');
+Route::get('/interview',function () {
+    return view('interview');
+})->name('interview');
+Route::get('/delete_entry',function () {
+    return view('delete_entry');
+})->name('delete_entry');
+Route::get('/company_bill',function () {
+    return view('company_bill');
+})->name('company_bill');
+Route::get('/courier',function () {
+    return view('courier');
+})->name('courier');
+Route::get('/add_courier',function () {
+    return view('add_courier');
+})->name('add_courier');
+Route::get('/add_users',function () {
+    return view('add_users');
+})->name('add_users');
+Route::get('/users',function () {
+    return view('users');
+})->name('users');
 Route::get('/add_applicant_page', [AplicantController::class, 'add_page'])->name('applicant.add_page');
 Route::post('/add_applicant/store', [AplicantController::class, 'store'])->name('applicant.store');
 
