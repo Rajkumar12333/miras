@@ -4,11 +4,11 @@
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
-            <h4 class="page-title">Add Agent</h4>
+            <h4 class="page-title">Edit Agent</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Add Agent</a></li>
+                    <li class="breadcrumb-item"><a href="#">Edit Agent</a></li>
 
                 </ol>
             </div>
@@ -31,7 +31,7 @@
                     <!-- <h5 class="card-title">Form row</h5> -->
                 </div>
                <div class="card-body">
-                <form method="POST" action="{{route('agent.add')}}">
+                <form method="POST" action="{{ route('agent.update', ['id' => $edit->id]) }}">
                 @csrf
                        
                         <div class="form-row">
@@ -40,7 +40,7 @@
                                 @error('agtname')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                                <input type="text" class="form-control" id="AgentName" name="agtname"
+                                <input type="text" class="form-control" value="{{$edit->agtname}}" id="AgentName" name="agtname"
                                     placeholder="Agent Name">
                             </div>
                             <div class="form-group col-md-6">
@@ -48,7 +48,7 @@
                                 @error('mailid')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                                <input type="email" class="form-control" id="Admin-Mail" name="mailid"
+                                <input type="email" class="form-control" value="{{$edit->mailid}}" id="Admin-Mail" name="mailid"
                                     placeholder="Admin Mail ID">
                             </div>
 
@@ -57,61 +57,57 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <label for="taVaNumber">Desk Mail ID:	</label>
-                                <input type="email" class="form-control" id="DeskMail" name="emailid"
+                                <input type="email" class="form-control" value="{{$edit->emailid}}" id="DeskMail" name="emailid"
                                     placeholder="Desk Mail ID">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="agentName">Username</label>
                                
-                                <input type="text" class="form-control" id="Username" name="username"
+                                <input type="text" class="form-control" value="{{$edit->username}}" id="Username" name="username"
                                     placeholder="Username">
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="agentName">Password</label>
+                               
+                                <input type="password" class="form-control" value="{{$edit->passwd}}" disabled id="password" name="password"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="tpFormUpload">Mobile Number</label>
-                                <input class="form-control" type="text" id="MobileNumber" name="mobile">
+                                <input class="form-control" type="text" value="{{$edit->mobile}}" id="MobileNumber" name="mobile">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="dob">GST No:</label>
-                                <input type="text" class="form-control" id="GST No" name="gst_no" placeholder="GST No">
+                                <input type="text" class="form-control" value="{{$edit->gst_no}}" id="GST No" name="gst_no" placeholder="GST No">
                             </div>
                             <div class="form-group col-md-12">
                                     <label for="internal-remarks">Address</label>
                                     <textarea class="form-control" name="address" id="Address"
-                                        rows="3" placeholder="Address"></textarea>
+                                        rows="3" placeholder="Address"> {{$edit->address}}</textarea>
                                 </div>
 
                             <div class="form-group col-md-4">
                                 <label for="outStationName">Active</label>
                                 <select id="outStationName" class="form-control" name="status">
-                                    <option value="1" selected>Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="1"  @if($edit->status=="1") selected @endif >Yes</option>
+                                    <option value="0"  @if($edit->status=="0") selected @endif>No</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="outStationName">Region:</label>
                                 <select id="outStationName" class="form-control" name="region">
-                                    <option value="1" selected>Karnataka</option>
-                                    <option value="2">Other State</option>
+                                    <option value="1" @if($edit->region=="1") selected @endif>Karnataka</option>
+                                    <option value="2" @if($edit->region=="2") selected @endif>Other State</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="outStationName">Outstation:</label>
                                 <select id="outStationName" class="form-control" name="outstation">
-                                    <option value="0" selected>General</option>
-                                    <option value="1">Outstation</option>
+                                    <option value="0"  @if($edit->outstation=="0") selected @endif>General</option>
+                                    <option value="1"  @if($edit->outstation=="1") selected @endif>Outstation</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="tpFormUpload">Password</label>
-                                @error('password')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <input class="form-control" type="password"  id="Password" name="password">
-                            </div>
-                            <div class="form-group col-md-6">
-                            <label for="password_confirmation">Confirm Password:</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
-                        </div>
+                            
 
                             </div>
                             

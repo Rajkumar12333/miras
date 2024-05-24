@@ -8,4 +8,14 @@ export default defineConfig({
       refresh: true,
     }),
   ],
+  resolve: {
+    alias: {
+      'bootstrap-datepicker': 'bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
+    },
+  },
+  build: {
+    rollupOptions: {
+      external: ['bootstrap-datepicker'],
+    },
+  },
 });
