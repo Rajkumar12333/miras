@@ -34864,5 +34864,16 @@ table.focus-on tfoot tr.focused td {
 a.btn.btn-primary-rgba:hover {
   color: #FFF;
 }
-
+.infobar-icon {
+  color: #0080ff;
+  border-radius: 3px;
+  display: flex;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+}
+img.infobar-icon  {
+  filter: invert(0.6) sepia(1) saturate(1) hue-rotate(185deg);
+}
 /*# sourceMappingURL=style.css.map */

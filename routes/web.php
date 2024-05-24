@@ -130,6 +130,9 @@ Route::get('/add_users',function () {
 Route::get('/users',function () {
     return view('users');
 })->name('users');
+Route::get('/font',function () {
+    return view('font');
+})->name('font');
 Route::get('/add_applicant_page', [AplicantController::class, 'add_page'])->name('applicant.add_page');
 Route::post('/add_applicant/store', [AplicantController::class, 'store'])->name('applicant.store');
 

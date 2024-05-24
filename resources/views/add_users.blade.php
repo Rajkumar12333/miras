@@ -36,11 +36,10 @@
                         @csrf
 
                         <div class="form-row">
-                            
+
                             <div class="form-group col-md-6">
                                 <label for="internal-remarks">Name</label>
-                                <input type="text" class="form-control" id="Name" name="Name"
-                                    placeholder="Name">
+                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="internal-remarks">Mail ID</label>
@@ -64,19 +63,19 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="internal-remarks">Branch</label>
-                                <select name="branchid" id="sel" class="form-control" onchange="ask(this)" >
-    <option selected="selected"></option>
-	
-	  <option value="1">Bangalore</option>
-	  
-	  <option value="2">Chennai</option>
-	  
-	  <option value="3">Delhi</option>
-	  
-	  <option value="4">Mumbai</option>
-	  
-	  <option value="5">Hyderabad</option>
-	  	</select>
+                                <select name="branchid" id="sel" class="form-control" onchange="ask(this)">
+                                    <option selected="selected"></option>
+
+                                    <option value="1">Bangalore</option>
+
+                                    <option value="2">Chennai</option>
+
+                                    <option value="3">Delhi</option>
+
+                                    <option value="4">Mumbai</option>
+
+                                    <option value="5">Hyderabad</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="outStationName">Active</label>
@@ -99,9 +98,10 @@
 
 
 <script>
-    $(document).ready(function() {
-  $('#summernote').summernote();
-});
+    $(document).ready(function () {
+        $('#summernote').summernote();
+    });
+
 </script>
 
 @endsection
