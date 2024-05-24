@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AplicantController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,7 @@ use App\Http\Controllers\AgentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/dashbord-view-page', [DashboardController::class, 'view_page'])->name("dashbord.view_page");
 Route::get('/user-add-page', [UserController::class, 'add_page'])->name("user.add_page");
 Route::get('/user-view-page', [UserController::class, 'view_page'])->name("user.view_page");
 Route::get('/user/{id}/edit-page', [UserController::class, 'edit_page'])->name('user.edit_page');
@@ -32,13 +35,14 @@ Route::post('/{id}/agent-delete', [AgentController::class, 'destroy'])->name("ag
 Route::post('/{id}/visa_tracking-update', [AplicantController::class, 'update'])->name("visa_tracking.update");
 Route::get('/visa_tracking/{id}/edit-page', [AplicantController::class, 'edit_page'])->name('visa_tracking.edit_page');
 Route::get('/dashboard', function () {
-    return redirect()->route('index');
+    return redirect()->route('dashbord.view_page');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::post('/{id}/visa_tracking-delete', [AplicantController::class, 'destroy'])->name("visa_tracking.destroy");
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
+    // return view('welcome');
 })->name('index');
 
 
@@ -124,15 +128,12 @@ Route::get('/courier',function () {
 Route::get('/add_courier',function () {
     return view('add_courier');
 })->name('add_courier');
-Route::get('/add_users',function () {
-    return view('add_users');
-})->name('add_users');
-Route::get('/users',function () {
-    return view('users');
-})->name('users');
-Route::get('/font',function () {
-    return view('font');
-})->name('font');
+// Route::get('/add_users',function () {
+//     return view('add_users');
+// })->name('add_users');
+// Route::get('/users',function () {
+//     return view('users');
+// })->name('users');
 Route::get('/add_applicant_page', [AplicantController::class, 'add_page'])->name('applicant.add_page');
 Route::post('/add_applicant/store', [AplicantController::class, 'store'])->name('applicant.store');
 

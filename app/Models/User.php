@@ -21,6 +21,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'userid',
+        'passwd',
+        'mailid',
+        'status',
+        'adminRight',
+        'branchid',
+        'user_type',
+        'staff_att_status',
+        'authority',
+        'add_authority',
+        'createdon',
+        'createdon',
+      
     ];
 
     /**
