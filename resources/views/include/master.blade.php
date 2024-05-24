@@ -111,7 +111,7 @@
                                 <img src="{{ asset('assets/images/svg-icon/advanced.svg') }}" class="img-fluid" alt="advanced"><span>Agent</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">                                
-                                <li><a href="{{ route('add_agent') }}">Add Agent</a></li>  
+                                <li><a href="{{ route('agent.add_page') }}">Add Agent</a></li>  
                             </ul>
                         </li>
                         <li>

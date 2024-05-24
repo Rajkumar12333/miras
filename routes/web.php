@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AplicantController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\AgentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,20 @@ use App\Http\Controllers\DocumentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/user-add-page', [UserController::class, 'add_page'])->name("user.add_page");
+Route::get('/user-view-page', [UserController::class, 'view_page'])->name("user.view_page");
+Route::get('/user/{id}/edit-page', [UserController::class, 'edit_page'])->name('user.edit_page');
+Route::post('/user-add', [UserController::class, 'store'])->name("user.add");
+Route::post('/{id}/user-update', [UserController::class, 'update'])->name("user.update");
+Route::post('/{id}/user-delete', [UserController::class, 'destroy'])->name("user.destroy");
+
+Route::get('/agent-add-page', [AgentController::class, 'add_page'])->name("agent.add_page");
+Route::get('/agent-view-page', [AgentController::class, 'view_page'])->name("agent.view_page");
+Route::get('/agent/{id}/edit-page', [AgentController::class, 'edit_page'])->name('agent.edit_page');
+Route::post('/agent-add', [AgentController::class, 'store'])->name("agent.add");
+Route::post('/{id}/agent-update', [AgentController::class, 'update'])->name("agent.update");
+Route::post('/{id}/agent-delete', [AgentController::class, 'destroy'])->name("agent.destroy");
+
 Route::post('/{id}/visa_tracking-update', [AplicantController::class, 'update'])->name("visa_tracking.update");
 Route::get('/visa_tracking/{id}/edit-page', [AplicantController::class, 'edit_page'])->name('visa_tracking.edit_page');
 Route::get('/dashboard', function () {
@@ -23,7 +38,7 @@ Route::get('/dashboard', function () {
 
 Route::post('/{id}/visa_tracking-delete', [AplicantController::class, 'destroy'])->name("visa_tracking.destroy");
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 })->name('index');
 
 // Route::get('/dashboard', function () {
@@ -48,12 +63,12 @@ Route::get('/crud/{id}/edit-page', [CrudController::class, 'crud_edit_page'])->n
 //     return view('visa_tracking');
 // })->name('visa_tracking');
 Route::get('/visa_tracking', [AplicantController::class, 'visa_tracking'])->name('visa_tracking');
-Route::get('/add_agent',function () {
-    return view('add_agent');
-})->name('add_agent');
-Route::get('/list_agent',function () {
-    return view('list_agent');
-})->name('list_agent');
+// Route::get('/add_agent',function () {
+//     return view('add_agent');
+// })->name('add_agent');
+// Route::get('/list_agent',function () {
+//     return view('list_agent');
+// })->name('list_agent');
 Route::get('/update_mail',function () {
     return view('update_mail');
 })->name('update_mail');
