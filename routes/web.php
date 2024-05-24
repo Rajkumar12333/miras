@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AplicantController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -124,12 +125,12 @@ Route::get('/courier',function () {
 Route::get('/add_courier',function () {
     return view('add_courier');
 })->name('add_courier');
-Route::get('/add_users',function () {
-    return view('add_users');
-})->name('add_users');
-Route::get('/users',function () {
-    return view('users');
-})->name('users');
+// Route::get('/add_users',function () {
+//     return view('add_users');
+// })->name('add_users');
+// Route::get('/users',function () {
+//     return view('users');
+// })->name('users');
 Route::get('/add_applicant_page', [AplicantController::class, 'add_page'])->name('applicant.add_page');
 Route::post('/add_applicant/store', [AplicantController::class, 'store'])->name('applicant.store');
 

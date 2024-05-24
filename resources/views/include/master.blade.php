@@ -85,7 +85,7 @@
                             
                         </li>
                         <li>
-                            <a href="{{ route('users') }}">
+                            <a href="{{ route('user.view_page') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Users</span>
                             </a>
                             
