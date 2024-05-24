@@ -51,17 +51,23 @@
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->name}}	</td>
                                             <td>{{$user->userid}}</td>
-                                            <td>{{$user->mail_id}}	</td>
+                                            <td>{{$user->mailid}}	</td>
                                              <td>{{$user->adminRight}}</td>
                                              <td>
                                                     <div class="btn-group btn-group-sm" style="float: none;"><button
                                                             type="button"
                                                             class="tabledit-edit-button btn btn-sm btn-info"
                                                             style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
+                                                                class="ti-pencil"></span>
+                                                            </button>
+                                                            <form action="{{ route('user.destroy', $user->id) }}" class="m-0" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                                            <button type="submit"
                                                             class="tabledit-delete-button btn btn-sm btn-info"
                                                             style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
+                                                                class="ti-trash"></span></button>
+</form></div>
                                                 </td>
                                         </tr>
                                        @endforeach
@@ -78,3 +84,16 @@
 
 
 @endsection
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    </script>
+  
+    @endif
