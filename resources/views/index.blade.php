@@ -28,7 +28,7 @@
                                     <img class="mr-3 rounded-circle" src="assets/images/crypto/bitcoin.png" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mb-2">Chennai Received Document</h5> 
-                                        <p class="mb-0">100</p>                                                             
+                                        <p class="mb-0">{{$chennaiCount}}</p>                                                             
                                     </div>
                                     <img class="action-bg rounded-circle" src="assets/images/crypto/1.png" alt="Generic placeholder image">
                                 </div>
@@ -44,7 +44,7 @@
                                     <img class="mr-3 rounded-circle" src="assets/images/crypto/ethereum.png" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mb-2">Bangalore Recived Document</h5> 
-                                        <p class="mb-0">150</p>                                                             
+                                        <p class="mb-0">{{$BangaloreCount}}</p>                                                             
                                     </div>
                                     <img class="action-bg rounded-circle" src="assets/images/crypto/2.png" alt="Generic placeholder image">
                                 </div>
@@ -60,7 +60,7 @@
                                     <img class="mr-3 rounded-circle" src="assets/images/crypto/ripple.png" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mb-2">Pending</h5> 
-                                        <p class="mb-0">22</p>                                                             
+                                        <p class="mb-0">{{$PendingCount}}</p>                                                             
                                     </div>
                                     <img class="action-bg rounded-circle" src="assets/images/crypto/3.png" alt="Generic placeholder image">
                                 </div>
@@ -76,7 +76,7 @@
                                     <img class="mr-3 rounded-circle" src="assets/images/crypto/bcc.png" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mb-2">Despatched</h5> 
-                                        <p class="mb-0">25</p>                                                             
+                                        <p class="mb-0">{{$DispatchCount}}</p>                                                             
                                     </div>
                                     <img class="action-bg rounded-circle" src="assets/images/crypto/4.png" alt="Generic placeholder image">
                                 </div>
@@ -92,7 +92,7 @@
                                     <img class="mr-3 rounded-circle" src="assets/images/crypto/bcc.png" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mb-2">Submitted</h5> 
-                                        <p class="mb-0">25</p>                                                             
+                                        <p class="mb-0">{{$SubmittedCount}}</p>                                                             
                                     </div>
                                     <img class="action-bg rounded-circle" src="assets/images/crypto/4.png" alt="Generic placeholder image">
                                 </div>
