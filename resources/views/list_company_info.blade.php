@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-4 col-lg-4">
                         <div class="widgetbar">
-                            <a href="{{ route('add_company') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Company</a>
+                            <a href="{{ route('company_info.add_page') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Company</a>
                         </div>                        
                     </div>
     </div>
@@ -44,23 +44,24 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($infos as $info)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Amazepixels</td>
-                                            <td>amazepixels@gmail.com</td>
-                                            <td>amaze</td>
+                                            <td>{{$info->id}}</td>
+                                            <td>{{$info->companyname}}</td>
+                                            <td>{{$info->emailid}}</td>
+                                            <td>{{$info->username}}</td>
                                              <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span></button><button type="button"
-                                                            class="tabledit-delete-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-trash"></span></button></div>
+                                                    <div class="btn-group btn-group-sm" style="float: none;">
+                                                    <!-- <button type="button" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button> -->
+                                                    <a href="{{ route('company_info.edit_page', $info->id) }}" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></a>
+                                                    <form action="{{ route('company_info.destroy', $info->id) }}" class="m-0" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $info->id }}">
+                                                    <button type="submit" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+                                                    </form></div>
                                                 </td>
                                         </tr>
-                                       
+                                       @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -73,3 +74,16 @@
 
 
 @endsection
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+    <script>
+       Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: '{{ session('success') }}',
+        showConfirmButton: false,
+        timer: 1500
+        });
+    </script>
+  
+    @endif

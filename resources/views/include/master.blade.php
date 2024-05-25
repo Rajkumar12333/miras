@@ -142,12 +142,12 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('country_info') }}">
+                            <a href="{{ route('country_info.view_page') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Country Info</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('company_info') }}">
+                            <a href="{{ route('company_info.view_page') }}">
                               <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Company Info</span>
                             </a>
                         </li>

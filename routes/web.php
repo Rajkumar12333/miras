@@ -7,6 +7,8 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CompanyInfoController;
+use App\Http\Controllers\CountryInfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,20 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/country-info-add-page', [CountryInfoController::class, 'add_page'])->name("country_info.add_page");
+Route::get('/country-info-view-page', [CountryInfoController::class, 'view_page'])->name("country_info.view_page");
+Route::get('/country-info/{id}/edit-page', [CountryInfoController::class, 'edit_page'])->name('country_info.edit_page');
+Route::post('/country-info-add', [CountryInfoController::class, 'store'])->name("country_info.add");
+Route::post('/{id}/country-info-update', [CountryInfoController::class, 'update'])->name("country_info.update");
+Route::post('/{id}/country-info-delete', [CountryInfoController::class, 'destroy'])->name("country_info.destroy");
+
+Route::get('/company-info-add-page', [CompanyInfoController::class, 'add_page'])->name("company_info.add_page");
+Route::get('/company-info-view-page', [CompanyInfoController::class, 'view_page'])->name("company_info.view_page");
+Route::get('/company-info/{id}/edit-page', [CompanyInfoController::class, 'edit_page'])->name('company_info.edit_page');
+Route::post('/company-info-add', [CompanyInfoController::class, 'store'])->name("company_info.add");
+Route::post('/{id}/company-info-update', [CompanyInfoController::class, 'update'])->name("company_info.update");
+Route::post('/{id}/company-info-delete', [CompanyInfoController::class, 'destroy'])->name("company_info.destroy");
+
 Route::post('/visa_tracking', [AplicantController::class, 'filter'])->name('visa_tracking.filter');
 
 Route::get('/dashbord-view-page', [DashboardController::class, 'view_page'])->name("dashbord.view_page");
@@ -100,18 +116,18 @@ Route::get('/add_visa_info',function () {
 Route::get('/visa_info',function () {
     return view('visa_info');
 })->name('visa_info');
-Route::get('/add_country_info',function () {
-    return view('add_country_info');
-})->name('add_country_info');
-Route::get('/country_info',function () {
-    return view('country_info');
-})->name('country_info');
-Route::get('/add_company',function () {
-    return view('add_company');
-})->name('add_company');
-Route::get('/company_info',function () {
-    return view('company_info');
-})->name('company_info');
+// Route::get('/add_country_info',function () {
+//     return view('add_country_info');
+// })->name('add_country_info');
+// Route::get('/country_info',function () {
+//     return view('country_info');
+// })->name('country_info');
+// Route::get('/add_company',function () {
+//     return view('add_company_info');
+// })->name('add_company');
+// Route::get('/company_info',function () {
+//     return view('list_company_info');
+// })->name('company_info');
 Route::get('/add_ticker',function () {
     return view('add_ticker');
 })->name('add_ticker');

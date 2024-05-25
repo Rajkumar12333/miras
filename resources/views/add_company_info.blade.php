@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
-                <a href="{{ route('company_info') }}" class="btn btn-primary-rgba"><i
+                <a href="{{ route('company_info.view_page') }}" class="btn btn-primary-rgba"><i
                         class="feather icon-plus mr-2"></i>Company info</a>
             </div>
         </div>
@@ -32,38 +32,49 @@
                     <!-- <h5 class="card-title">Form row</h5> -->
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('company_info.add')}}">
                         @csrf
 
                         <div class="form-row">
                             
                             <div class="form-group col-md-12">
                                 <label for="internal-remarks">Company Name</label>
-                                <input type="text" class="form-control" id="Subject" name="Subject"
+                                <input type="text" class="form-control" id="Subject" name="companyname"
                                     placeholder="Company Name">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="internal-remarks">Company Mail ID</label>
-                                <input type="text" class="form-control" id="Company Mail ID" name="Company Mail ID"
+                                <input type="text" class="form-control" id="Company Mail ID" name="emailid"
                                     placeholder="Company Mail ID">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="internal-remarks">Username</label>
-                                <input type="text" class="form-control" id="Username" name="Username"
+                                <input type="text" class="form-control" id="Username" name="username"
                                     placeholder="Username">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="internal-remarks">Address</label>
-                                <textarea class="form-control" id="summernote" name="editordata" col="5" rows="5"
+                                <textarea class="form-control" id="summernote" name="address" col="5" rows="5"
                                     placeholder="Address"></textarea>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="outStationName">Active</label>
-                                <select id="outStationName" class="form-control" name="outstation_name">
-                                    <option selected>Yes</option>
-                                    <option>No</option>
+                                <select id="outStationName" class="form-control" name="status">
+                                    <option   value="1">Yes</option>
+                                    <option  value="0" >No</option>
                                 </select>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="tpFormUpload">Password</label>
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <input class="form-control" type="password"  id="Password" name="password"  >
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="password_confirmation">Confirm Password:</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" >
+                        </div>
                         </div>
 
 
