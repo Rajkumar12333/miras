@@ -27205,6 +27205,8 @@ mark {
   padding: 0;
   color: #263a5b;
   border-radius: 3px;
+  border: none;
+  background: none;
 }
 .userbox .profile-icon:hover {
   background-color: transparent;
@@ -30540,10 +30542,13 @@ canvas {
   background: #ffffff;
   color: #8A98AC;
   border: none;
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+padding: 20px;
   border-radius: 5px;
 }
-
+.datepicker th, .datepicker td{
+  padding: 7px;
+  cursor: pointer;
+}
 .datepicker--day-name {
   color: #0080ff;
   font-size: 13px;
@@ -30867,7 +30872,7 @@ input:-internal-autofill-selected {
   background-color: #ffffff;
   font-size: 15px;
   color: #8A98AC;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1px solid #ced4da;
   border-radius: 3px;
 }
 .form-control:focus {

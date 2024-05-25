@@ -33,6 +33,7 @@
     <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     
+    
     <style>
         .datepicker-dropdown {
             background-color: #f8f9fa;
@@ -47,9 +48,10 @@
         .datepicker-days .table-condensed tbody .active {
             background-color: #007bff; /* Bootstrap primary color */
             border-radius: 50%;
+            color:#FFF;
         }
-        .datepicker-days .table-condensed tbody tr:hover td,
-        .datepicker-days .table-condensed tbody tr:hover td.day {
+        .datepicker-days .table-condensed tbody td:hover,
+        .datepicker-days .table-condensed tbody td:hover  {
             background-color: rgba(0, 123, 255, 0.1); /* Lighter shade of primary color */
             border-radius: 50%;
         }
@@ -309,7 +311,7 @@
                                                         <li class="media dropdown-item">
                                                             <!-- <a href="#" class="profile-icon"><img src="{{ asset('assets/images/svg-icon/logout.svg') }}" class="img-fluid" alt="logout">Logout</a> -->
                                                             
-    <form method="POST" action="{{ route('logout') }}">
+                                                            <form method="POST" action="{{ route('logout') }}">
                                                             @csrf
                                                             <button class="profile-icon"><img src="{{ asset('assets/images/svg-icon/logout.svg') }}" class="img-fluid" alt="logout">Logout</button>
                                                             </form>

@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="dob">Date of Birth</label>
-                                <input type="text" class="form-control datepicker" id="dob" name="dob">
+                                <input type="text" class="form-control date" id="dob" name="dob">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="location">Location</label>
