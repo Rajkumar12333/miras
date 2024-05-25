@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
-                <a href="{{ route('company_info') }}" class="btn btn-primary-rgba"><i
+                <a href="{{ route('user.view_page') }}" class="btn btn-primary-rgba"><i
                         class="feather icon-plus mr-2"></i>Users List</a>
             </div>
         </div>

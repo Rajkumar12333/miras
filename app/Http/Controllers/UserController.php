@@ -38,7 +38,7 @@ class UserController extends Controller
         ],$messages);
         $user = new User([
             'name' =>$request->name,
-            'mail_id'  =>$request->mail_id,
+            'mailid'  =>$request->mail_id,
             'userid'  => $request->userid,
             'password'=>Hash::make($request->password),
             'branchid'=>$request->branchid,
@@ -49,10 +49,29 @@ class UserController extends Controller
             'createdby'=>Auth::user()->id
         ]);
         $user->save();
+        return redirect()->route('user.view_page')->with('success', 'Record Added successfully');
     }
     public function destroy(Request $request,$id){
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('user.view_page')->with('success', 'Record deleted successfully');
+    }
+    public function update(Request $request,$id){
+        $blog = User::findOrFail($id);
+        $blog->update([
+            'name' =>$request->name,
+            'mailid'  =>$request->mail_id,
+            'userid'  => $request->userid,
+            // 'password'=>Hash::make($request->password),
+            'branchid'=>$request->branchid,
+            'adminRight'=>$request->rights,
+            // 'passwd'=>Hash::make($request->password),
+            'email'=>$request->userid,
+            // 'createdon'=>now(),
+            // 'createdby'=>Auth::user()->id
+
+        ]);
+        return redirect()->route('user.view_page')->with('success', 'Record Added successfully');
+
     }
 }

@@ -17,6 +17,8 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/visa_tracking', [AplicantController::class, 'filter'])->name('visa_tracking.filter');
+
 Route::get('/dashbord-view-page', [DashboardController::class, 'view_page'])->name("dashbord.view_page");
 Route::get('/user-add-page', [UserController::class, 'add_page'])->name("user.add_page");
 Route::get('/user-view-page', [UserController::class, 'view_page'])->name("user.view_page");
