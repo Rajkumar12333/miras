@@ -52,14 +52,24 @@
                                             <td>{{$user->name}}	</td>
                                             <td>{{$user->userid}}</td>
                                             <td>{{$user->mailid}}	</td>
-                                             <td>{{$user->adminRight}}</td>
                                              <td>
-                                                    <div class="btn-group btn-group-sm" style="float: none;"><button
-                                                            type="button"
-                                                            class="tabledit-edit-button btn btn-sm btn-info"
-                                                            style="float: none; margin: 5px;"><span
-                                                                class="ti-pencil"></span>
-                                                            </button>
+                                                @if($user->adminRight==1)
+                                                ADMIN
+                                                @elseif($user->adminRight==0)
+                                                USERS
+                                                @elseif($user->adminRight==2)
+                                                OUT STATION USER
+                                                @elseif($user->adminRight==3)
+                                                COMPANY USER
+                                                @else
+
+                                                @endif
+
+                                            </td>
+                                             <td>
+                                                    <div class="btn-group btn-group-sm" style="float: none;">
+                                                    <!-- <button type="button" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button> -->
+                                                    <a href="{{ route('user.edit_page', $user->id) }}"  class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></a>
                                                             <form action="{{ route('user.destroy', $user->id) }}" class="m-0" method="post">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $user->id }}">

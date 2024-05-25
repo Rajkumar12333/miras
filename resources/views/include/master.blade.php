@@ -300,7 +300,9 @@
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                                                 <div class="dropdown-item">
                                                     <div class="profilename">
+                                                        @if(!empty(Auth::user()->name))
                                                     <h5>{{ Auth::user()->name }}</h5>
+                                                    @endif
                                                     </div>
                                                 </div>
                                                 <div class="userbox">

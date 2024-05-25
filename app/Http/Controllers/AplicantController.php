@@ -17,11 +17,63 @@ use App\Models\Tp_file;
 class AplicantController extends Controller
 {
     //
+    public function filter(Request $request)
+    {
+        $Agent = Agent::orderBy('agtname', 'asc')->get();
+        $Country=Country::all();
+        // Start with a base query
+      //  $query = Applicant::query();
+      // dd($request->all());
+        // List of input fields to filter by
+        // $fields = ['agtid', 'country', 'id', 'passportno', 'name'];
+
+        // // Loop through each field and apply the condition if the input is present
+        // foreach ($fields as $field) {
+        //     if ($request->filled($field)) {
+        //         $query->where($field, $request->input($field));
+        //     }
+        // }
+
+        // // Execute the query to get the filtered results
+        // $view = $query->get();
+        $query = Applicant::query();
+
+    // Define the fields to filter
+    $fields = ['agtid', 'country', 'passportno', 'name'];
+
+    // Loop through each field and apply the condition if the input is present
+    foreach ($fields as $field) {
+        $value = $request->input($field);
+        if ($request->filled($field) && $value !== 'null') {
+            $query->where($field, $value);
+        }
+    }
+    if ($request->filled('id')) {
+        $idValue = $request->input('id');
+
+        // Extract numeric value using regular expression
+        preg_match('/\d+/', $idValue, $matches);
+
+        if (!empty($matches)) {
+            $numericId = $matches[0];
+            \Log::info("Filtering by id: $numericId");
+            $query->where('id', $numericId);
+        } else {
+            \Log::info("No numeric id found in: $idValue");
+        }
+    }
+    $query->orderBy('createdon', 'desc');
+    $view = $query->get();
+// print_r($view);
+        // Pass the results to the view
+        return view('visa_tracking', compact('view','Agent','Country'));
+    }
     public function visa_tracking(){
-      
+        $Agent = Agent::orderBy('agtname', 'asc')->get();
+        $Country=Country::all();
         $view = Applicant::orderBy('createdon', 'desc')->get();
        
-        return view('visa_tracking',compact('view'));
+        return view('visa_tracking',compact('view','Agent','Country'));
     }
     public function add_page(Request $request){
         $Country=Country::all();
