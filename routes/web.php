@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AplicantController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\AgentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyInfoController;
 use App\Http\Controllers\CountryInfoController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,12 +38,12 @@ Route::post('/{id}/company-info-delete', [CompanyInfoController::class, 'destroy
 Route::post('/visa_tracking', [AplicantController::class, 'filter'])->name('visa_tracking.filter');
 
 Route::get('/dashbord-view-page', [DashboardController::class, 'view_page'])->name("dashbord.view_page");
-Route::get('/user-add-page', [UserController::class, 'add_page'])->name("user.add_page");
-Route::get('/user-view-page', [UserController::class, 'view_page'])->name("user.view_page");
-Route::get('/user/{id}/edit-page', [UserController::class, 'edit_page'])->name('user.edit_page');
-Route::post('/user-add', [UserController::class, 'store'])->name("user.add");
-Route::post('/{id}/user-update', [UserController::class, 'update'])->name("user.update");
-Route::post('/{id}/user-delete', [UserController::class, 'destroy'])->name("user.destroy");
+Route::get('/user-add-page', [UserPageController::class, 'add_page'])->name("user.add_page");
+Route::get('/user-view-page', [UserPageController::class, 'view_page'])->name("user.view_page");
+Route::get('/user/{id}/edit-page', [UserPageController::class, 'edit_page'])->name('user.edit_page');
+Route::post('/user-add', [UserPageController::class, 'store'])->name("user.add");
+Route::post('/{id}/user-update', [UserPageController::class, 'update'])->name("user.update");
+Route::post('/{id}/user-delete', [UserPageController::class, 'destroy'])->name("user.destroy");
 
 Route::get('/agent-add-page', [AgentController::class, 'add_page'])->name("agent.add_page");
 Route::get('/agent-view-page', [AgentController::class, 'view_page'])->name("agent.view_page");
@@ -72,6 +74,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
 });
 
 require __DIR__.'/auth.php';
