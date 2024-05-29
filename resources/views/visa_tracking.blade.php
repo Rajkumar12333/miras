@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @extends('include.master')
 @section('content')
 <!-- Start Breadcrumbbar -->
@@ -122,7 +126,7 @@
                             </thead>
                             <tbody>
                                 @if(!empty($view) && count($view)>0)
-                                @foreach($view as $views)
+                                @foreach ($view as $index => $views)
                                 <tr>
                                     <td>
                                         @php
@@ -151,9 +155,11 @@
                                         @endif
                                     </td>
                                     <td>{{$views->rcddate}}</td>
-                                    <td>{{$views->subdate}}</td>
-                                    <td>{{$views->collectdate}}</td>
-                                    <td>{{$views->senton}}</td>
+                                    
+                                    <input type="hidden" id="id-{{ $index }}" name="id" value="{{$views->id}}">
+                                    <td><input class="txtbox datepicker" type="text" name="startdate" id="datepicker1-{{ $index }}" value="{{ $views->subdate }}"  onchange="change_send(this, {{ $index }})"></td>
+            <td><input class="txtbox datepicker" type="text" name="enddate" id="datepicker2-{{ $index }}" value="{{ $views->collectdate }}"  onchange="change_send(this, {{ $index }})"></td>
+            <td>{{$views->senton}}</td>
                                     <td>{{$views->doc}}</td>
                                     <td>{{$views->appt_status}} </td>
                                     <td>{{$views->dd}}</td>
@@ -204,3 +210,56 @@
 
     @endif
     @endsection
+
+    <script>
+       $(document).ready(function() {
+    $(".datepicker").datepicker({
+        dateFormat: 'yy/mm/dd',
+        onSelect: function(dateText, inst) {
+            let index = $(this).attr('id').split('-')[1]; // Get the index from the ID
+            console.log("Date selected: " + dateText + " for index: " + index);
+            alert("Date selected: " + dateText + " for index: " + index);
+            change_send(index);
+        }
+    });
+});
+
+function change_send(element, index) {
+    function formatDate(dateString) {
+    // Split the date string by "/"
+    var parts = dateString.split("/");
+    // Rearrange the parts to match the "Y-m-d" format
+    return parts[2] + "-" + parts[0] + "-" + parts[1];
+}
+            alert('Date changed for index: ' + index);
+
+            // Get the current values from the date pickers using the index
+            var id = $('#id-' + index).val();
+            var startDate = $('#datepicker1-' + index).val();
+            var endDate = $('#datepicker2-' + index).val();
+            var formattedEndDate = formatDate(endDate);
+
+            // Debugging: Check the values
+            console.log("ID:", id);
+            console.log("Start Date:", startDate);
+            console.log("End Date:", endDate);
+
+            // Make an AJAX request to update the dates
+            $.ajax({
+                url: '{{ route("updateDate") }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    startdate: startDate,
+                    enddate: formattedEndDate
+                },
+                success: function(response) {
+                    alert('Dates updated successfully');
+                },
+                error: function(response) {
+                    alert('An error occurred');
+                }
+            });
+        }
+    </script>

@@ -60,6 +60,7 @@ class AplicantController extends Controller
         return view('visa_tracking', compact('view','Agent','Country'));
     }
     public function visa_tracking(){
+        ini_set('max_execution_time',3600);
         $Agent = Agent::orderBy('agtname', 'asc')->get();
         $Country=Country::all();
         $view = Applicant::orderBy('createdon', 'desc')->get();

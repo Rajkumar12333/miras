@@ -11,6 +11,7 @@ use App\Http\Controllers\CompanyInfoController;
 use App\Http\Controllers\CountryInfoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/update-date', [DateController::class, 'updateDate'])->name('updateDate');
+
 Route::get('/country-info-add-page', [CountryInfoController::class, 'add_page'])->name("country_info.add_page");
 Route::get('/country-info-view-page', [CountryInfoController::class, 'view_page'])->name("country_info.view_page");
 Route::get('/country-info/{id}/edit-page', [CountryInfoController::class, 'edit_page'])->name('country_info.edit_page');
