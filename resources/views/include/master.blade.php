@@ -100,6 +100,21 @@
                         </li>
                         <li>
                             <a href="javaScript:void();">
+                                <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"><span>Accounts Department</span><i class="feather icon-chevron-right pull-right"></i>
+                            </a>
+                            <ul class="vertical-submenu">
+                                <li><a href="{{ route('update_mail') }}">Invoice List</a></li>
+                                <li><a href="{{ route('fee_mail') }}">Submission List</a></li>
+                                <li><a href="javaScript:void();">Visa Fees</a></li>
+                                <li><a href="javaScript:void();">Payment</a></li>
+                                <li><a href="javaScript:void();">Allowances</a></li>
+                                <li><a href="javaScript:void();">Day Book</a></li>
+                                <li><a href="javaScript:void();">Receipt Files</a></li>
+                                <li><a href="{{route('tpfiles.view_page')}}">TP Files</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javaScript:void();">
                                 <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"><span>Mail</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">

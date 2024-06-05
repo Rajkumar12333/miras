@@ -11,9 +11,7 @@ class DashboardController extends Controller
     function __construct()
     {
         $this->middleware(['permission:dashboard-list'], ['only' => ['view_page']]);
-        // $this->middleware(['permission:users-create'], ['only' => ['add_page', 'add']]);
-        // $this->middleware(['permission:users-edit'], ['only' => ['edit_page', 'update']]);
-        // $this->middleware(['permission:users-delete'], ['only' => ['destroy']]);
+      
     }
     public function view_page(Request $request){
         $chennaiCount = Applicant::where('branchid','2')->count();

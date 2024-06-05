@@ -12,6 +12,8 @@ use App\Http\Controllers\CountryInfoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DateController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\TpFilesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,18 @@ use App\Http\Controllers\DateController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//tpfiles start
+Route::get('tp-files/{id}/show', [TpFilesController::class, 'show'])->name('tpfiles.show');
+Route::get('/tp-files-add-page', [TpFilesController::class, 'add_page'])->name("tpfiles.add_page");
+Route::get('/tp-files-list-page', [TpFilesController::class, 'list_page'])->name("tpfiles.view_page");
+Route::get('/tp-files/{id}/edit-page', [TpFilesController::class, 'edit_page'])->name('tpfiles.edit_page');
+Route::post('/tp-files-add', [TpFilesController::class, 'store'])->name("tpfiles.add");
+Route::post('/{id}/tp-files-update', [TpFilesController::class, 'update'])->name("tpfiles.update");
+Route::post('/{id}/tp-files-delete', [TpFilesController::class, 'destroy'])->name("tpfiles.destroy");
+//tpfiles end
+
+Route::get('/submission-view-page', [InvoiceController::class, 'submission_page'])->name("submission.view_page");
 Route::post('/update-date', [DateController::class, 'updateDate'])->name('updateDate');
 
 Route::get('/country-info-add-page', [CountryInfoController::class, 'add_page'])->name("country_info.add_page");

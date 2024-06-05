@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Applicant;
 use App\Models\Country;
 use App\Models\Category;
 use App\Models\Branch;
 use App\Models\Agent;
 use App\Models\Tbl_document;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use App\Models\Tp_file;
 use App\Models\User;
 class AplicantController extends Controller
@@ -63,7 +65,7 @@ class AplicantController extends Controller
         ini_set('max_execution_time',3600);
         $Agent = Agent::orderBy('agtname', 'asc')->get();
         $Country=Country::all();
-        $view = Applicant::orderBy('createdon', 'desc')->get();
+        $view = Applicant::orderBy('createdon', 'desc')->paginate(10);
     
         return view('visa_tracking',compact('view','Agent','Country'));
     }
@@ -95,6 +97,7 @@ class AplicantController extends Controller
     {
         $documents = $request->input('document');
         $file = $request->file('tp_form');
+        if(!empty($request->tp_form)){
         if ($file->isValid()) {
             $userId = Auth::user()->id;
             $fileExt = $file->getClientOriginalExtension();
@@ -104,7 +107,9 @@ class AplicantController extends Controller
             // Move file to destination
             $file->move(public_path('androidapp/tp_files'), $newName);
         }
+    }
         foreach ($documents as $document) {
+            
         $applicant = new Applicant([
             'name' =>$document['name'],
             'passportno'  => $document['passportno'],
@@ -148,6 +153,24 @@ class AplicantController extends Controller
             'number'  => $request->number,
         ]);
         $applicant->save();
+
+        $qrCodeData = $applicant->id;
+        $imageName = 'qrcode-' . time() . '.png';
+        $imagePath = public_path('qrcodes/' . $imageName);
+
+        // Ensure the directory exists
+        if (!File::exists(public_path('qrcodes'))) {
+            File::makeDirectory(public_path('qrcodes'), 0755, true);
+        }
+
+        // Store the QR code image
+        QrCode::format('png')->size(200)->generate($qrCodeData, $imagePath);
+
+        // // Save image path to database
+        $qrCodeImage = new Applicant();
+        $qrCodeImage->barcode = 'qrcodes/' . $imageName;
+        $qrCodeImage->save();
+
         $tp = new Tp_file([
             'track_id' => $applicant->id,
             'staff_id' => $userId,

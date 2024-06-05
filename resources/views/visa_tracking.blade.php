@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -179,7 +180,13 @@
                                             </form>
                                         </div>
                                     </td>
-                                    <td>{{$views->bill}}</td>
+                                    <td>
+                                        @if($views->bill==1)
+                                        <h4 style=color:#093; font-size:16px font-weight:bold; > BILLED </h4>
+                                        @else
+                                        <h4 style=color:#F00; font-size:16px font-weight:bold;> NO </h4>
+                                        @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                               
