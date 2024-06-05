@@ -22,18 +22,18 @@
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
-            <h4 class="page-title">Tp files List</h4>
+            <h4 class="page-title">Receipt Files List</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Tp files List</a></li>
+                    <li class="breadcrumb-item"><a href="#">Receipt files List</a></li>
 
                 </ol>
             </div>
         </div>
         <div class="col-md-4 col-lg-4">
                         <div class="widgetbar">
-                            <a href="{{ route('tpfiles.add_page') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Tp files</a>
+                            <a href="{{ route('receipt_files.add_page') }}" class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Add Receipt files</a>
                         </div>                        
                     </div>
     </div>
@@ -46,7 +46,7 @@
             <div class="card m-b-30">
                 </div>
                 <div class="card-body">
-                <h5 class="card-title">Tp Files Table</h5>
+                <h5 class="card-title">Receipt Files Table</h5>
                     <div class="table-responsive">
                         <table id="submission_list" class="table table-striped table-bordered">
                             <thead>
@@ -80,24 +80,24 @@
                                     <td>
                                                     <div class="btn-group btn-group-sm" style="float: none;">
                                                     <!-- <a href="{{ route('tpfiles.edit_page', $views->id) }}"  class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></a> -->
-                                                    <form action="{{ route('tpfiles.destroy', $views->id) }}" class="m-0" method="post">
+                                                    <form action="{{ route('receipt_files.destroy', $views->id) }}" class="m-0" method="post">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $views->id }}">
                                                             <button type="submit" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
                                                     </form>
-                                                    <a href="javascript:void(0)" id="show-tpfiles" data-url="{{ route('tpfiles.show', $views->id) }}" class="btn text-white bg-themes">Show</a>
+                                                    <a href="javascript:void(0)" id="show-tpfiles" data-url="{{ route('receipt_files.show', $views->id) }}" class="btn text-white bg-themes">Show</a>
                                                 </div>
                                                 </td>
                                 </tr>
                                 @endforeach
                               
                             </tbody>
-  
-                        </table>
-                        {{$tp_files->links('pagination::bootstrap-4')}}
+                            {{$tp_files->links('pagination::bootstrap-4')}}
                         @else
-                        <div class="alert alert-secondary" role="alert">No Applicants found</div>
+                        <div class="alert alert-secondary" role="alert">No Receipt found</div>
                                 @endif
+                        </table>
+
  
                     </div>
                    

@@ -17,6 +17,7 @@ use App\Http\Controllers\TpFilesController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\CreditPaymentController;
+use App\Http\Controllers\ReceiptFileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,14 @@ use App\Http\Controllers\CreditPaymentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//receipt file start
+Route::get('receipt-files/{id}/show', [ReceiptFileController::class, 'show'])->name('receipt_files.show');
+Route::get('/receipt-files-add-page', [ReceiptFileController::class, 'add_page'])->name("receipt_files.add_page");
+Route::get('/receipt-files-list-page', [ReceiptFileController::class, 'list_page'])->name("receipt_files.view_page");
+Route::post('/{id}/receipt-files-delete', [ReceiptFileController::class, 'destroy'])->name("receipt_files.destroy");
+Route::post('/receipt-files-add', [ReceiptFileController::class, 'store'])->name("receipt_files.add");
+//receipt file end
+
 //Credit payment start
 Route::get('/credit-payment-list-page', [CreditPaymentController::class, 'list_page'])->name("credit_payment.list_page");
 Route::get('/credit-payment-add-page', [CreditPaymentController::class, 'add_page'])->name("credit_payment.add_page");

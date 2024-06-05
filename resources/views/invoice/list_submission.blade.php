@@ -114,7 +114,7 @@
                         {{ $results->links() }}
                     </div>
                         @else
-                                <p class="text-center">No Records Found</p>
+                        <div class="alert alert-secondary" role="alert">No Records Found</div>
                                 @endif
                     </div>
                 </div>
@@ -128,7 +128,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Success!',
-            text: '{{ session('success ') }}',
+            text: '{{ session("success") }}',
             showConfirmButton: false,
             timer: 1500
         });

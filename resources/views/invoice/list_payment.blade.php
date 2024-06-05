@@ -91,7 +91,7 @@
                         </table>
                         {{$allowance->links('pagination::bootstrap-4')}}
                         @else
-                                <p class="text-center">No Applicants found</p>
+                        <div class="alert alert-secondary" role="alert">No Payment found</div>
                                 @endif
  
                     </div>
@@ -129,8 +129,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Success!',
-            text: '{{ session('
-            success ') }}',
+            text: '{{ session('success') }}',
             showConfirmButton: false,
             timer: 1500
         });

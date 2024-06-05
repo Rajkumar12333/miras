@@ -109,7 +109,7 @@
                                 <li><a href="{{route('credit_payment.list_page')}}">Payment</a></li>
                                 <li><a href="{{route('allowance.list_page')}}">Allowances</a></li>
                                 <li><a href="javaScript:void();">Day Book</a></li>
-                                <li><a href="javaScript:void();">Receipt Files</a></li>
+                                <li><a href="{{route('receipt_files.view_page')}}">Receipt Files</a></li>
                                 <li><a href="{{route('tpfiles.view_page')}}">TP Files</a></li>
                             </ul>
                         </li>
