@@ -14,6 +14,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\TpFilesController;
+use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\AllowanceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,8 +36,17 @@ Route::post('/tp-files-add', [TpFilesController::class, 'store'])->name("tpfiles
 Route::post('/{id}/tp-files-update', [TpFilesController::class, 'update'])->name("tpfiles.update");
 Route::post('/{id}/tp-files-delete', [TpFilesController::class, 'destroy'])->name("tpfiles.destroy");
 //tpfiles end
+//allowance start
+Route::get('allowance/{id}/show', [AllowanceController::class, 'show'])->name('allowance.show');
+Route::get('/allowance-list-page', [AllowanceController::class, 'list_page'])->name("allowance.list_page");
+Route::get('/allowance-add-page', [AllowanceController::class, 'add_page'])->name("allowance.add_page");
+Route::post('/allowance-add', [AllowanceController::class, 'store'])->name("allowance.add");
 
-Route::get('/submission-view-page', [InvoiceController::class, 'submission_page'])->name("submission.view_page");
+//allowance end
+
+Route::get('/submission-list-page', [SubmissionController::class, 'list_page'])->name("submission.view_page");
+Route::get('/invoice-list-page', [InvoiceController::class, 'list_page'])->name("invoice.view_page");
+
 Route::post('/update-date', [DateController::class, 'updateDate'])->name('updateDate');
 
 Route::get('/country-info-add-page', [CountryInfoController::class, 'add_page'])->name("country_info.add_page");

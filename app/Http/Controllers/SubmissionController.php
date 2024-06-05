@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BillData;
 
-class InvoiceController extends Controller
+class SubmissionController extends Controller
 {
     public function list_page()
     {
@@ -17,6 +17,6 @@ class InvoiceController extends Controller
     ->orderByDesc('bill_datas.id')
     ->paginate(10);
     
-        return view('invoice.list_invoice',compact('results'));
+        return view('invoice.list_submission',compact('results'));
     }
 }
