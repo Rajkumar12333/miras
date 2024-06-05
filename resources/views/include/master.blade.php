@@ -106,7 +106,7 @@
                                 <li><a href="{{ route('invoice.view_page') }}">Invoice List</a></li>
                                 <li><a href="{{ route('submission.view_page') }}">Submission List</a></li>
                                 <li><a href="javaScript:void();">Visa Fees</a></li>
-                                <li><a href="javaScript:void();">Payment</a></li>
+                                <li><a href="{{route('credit_payment.list_page')}}">Payment</a></li>
                                 <li><a href="{{route('allowance.list_page')}}">Allowances</a></li>
                                 <li><a href="javaScript:void();">Day Book</a></li>
                                 <li><a href="javaScript:void();">Receipt Files</a></li>

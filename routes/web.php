@@ -16,6 +16,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\TpFilesController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\AllowanceController;
+use App\Http\Controllers\CreditPaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,12 @@ use App\Http\Controllers\AllowanceController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//Credit payment start
+Route::get('/credit-payment-list-page', [CreditPaymentController::class, 'list_page'])->name("credit_payment.list_page");
+Route::get('/credit-payment-add-page', [CreditPaymentController::class, 'add_page'])->name("credit_payment.add_page");
+Route::post('/credit-payment-add', [CreditPaymentController::class, 'store'])->name("credit_payment.add");
 
+//credit payment end
 //tpfiles start
 Route::get('tp-files/{id}/show', [TpFilesController::class, 'show'])->name('tpfiles.show');
 Route::get('/tp-files-add-page', [TpFilesController::class, 'add_page'])->name("tpfiles.add_page");
