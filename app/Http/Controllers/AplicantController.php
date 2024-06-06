@@ -191,7 +191,7 @@ class AplicantController extends Controller
             File::makeDirectory(public_path($filePath), 0755, true);
         }
         $branchcode=Branch::find($request->location);
-echo $qrcontent=$branchcode->shortname.'-'.$applicant->id;
+ $qrcontent=$branchcode->shortname.'-'.$applicant->id;
         // Generate the QR code with specific size
         $result = Builder::create()
             ->data($qrcontent)
@@ -268,7 +268,7 @@ echo $qrcontent=$branchcode->shortname.'-'.$applicant->id;
     // 
 
         // Redirect back with success message
-      //  return redirect()->back()->with('success', 'Document created successfully.');
+        return redirect()->back()->with('success', 'Document created successfully.');
     }
     public function update(Request $request,$id){
         $newName=null;

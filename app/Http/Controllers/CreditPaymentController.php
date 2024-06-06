@@ -11,17 +11,7 @@ use App\Models\Card;
 
 class CreditPaymentController extends Controller
 {
-    //
-    public function daybook(Request $request){
-        $daybook = DB::table('credit_payments')
-    ->leftJoin('agents', 'agents.id', '=', 'credit_payments.agent_id')
-    ->leftJoin('cards', 'card.card', '=', 'credit_payments.bank')
-    ->select('agents.agtname as agent_name', 'cards.name as card_name', 'credit_payments.*')
-    ->where('credit_payments.date', '=', $req_date)
-    ->orderBy('credit_payments.id', 'desc')
-    ->get();
-          return view('invoice.list_payment',compact('daybook'));
-      }
+
     public function show($id)
     {
         $allowance = CreditPayment::find($id); 
@@ -45,6 +35,7 @@ class CreditPaymentController extends Controller
     }
     public function store(Request $request)
     {
+        $formattedDate = now()->format('d-m-Y');
         //  dd($request->all());
         $company = new CreditPayment([
             'payment_from' => $request->from,
@@ -53,7 +44,7 @@ class CreditPaymentController extends Controller
             'payment_method' => $request->payment_method,
             'amount' =>$request->amount,
             'debiter_id'=>Auth::user()->id,
-            'date'=>date("d-m-y")
+            'date'=>$formattedDate
         ]);
         $company->save();
         return redirect()->route('credit_payment.list_page')->with('success', 'Record added successfully');

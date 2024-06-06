@@ -18,6 +18,7 @@ use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\CreditPaymentController;
 use App\Http\Controllers\ReceiptFileController;
+use App\Http\Controllers\BillController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,14 @@ use App\Http\Controllers\ReceiptFileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//bill payment start
+Route::get('/country-featch', [BillController::class, 'fetchCountryData'])->name("bill_payment.fetch_country");
+Route::get('/passport-featch', [BillController::class, 'featch_pass'])->name("bill_payment.featch_pass");
+Route::get('/bill-payment-add-page', [BillController::class, 'add_page'])->name("bill_payment.add_page");
+Route::post('/bill-payment-add', [BillController::class, 'store'])->name("bill_payment.add");
+//bill payment end
+Route::get('/daybook-list-page', [TpFilesController::class, 'Daybook'])->name("daybook");
+Route::post('/daybook-search', [TpFilesController::class, 'Daybook_search'])->name("daybook.search");
 Route::get('/generate-qrcode', [AplicantController::class, 'generateAndStore']);
 //receipt file start
 Route::get('receipt-files/{id}/show', [ReceiptFileController::class, 'show'])->name('receipt_files.show');

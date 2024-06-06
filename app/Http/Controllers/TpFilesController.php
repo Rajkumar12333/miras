@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -12,6 +12,28 @@ use App\Models\Tp_file;
 class TpFilesController extends Controller
 {
     //
+    public function Daybook_search(Request $request){
+        // dd($request->all());
+        $inputDate = $request->input('date');
+
+        // Convert the input date to the stored format
+        $formattedDate = Carbon::createFromFormat('Y-m-d', $inputDate)->format('d-m-Y');
+
+        $credit = DB::table('credit_payments')
+        ->leftJoin('agents', 'agents.id', '=', 'credit_payments.agent_id')
+        ->leftJoin('cards', 'cards.card', '=', 'credit_payments.bank')
+        ->select('agents.agtname as agent_name', 'cards.name as card_name', 'credit_payments.*')
+        ->where('credit_payments.date', '=', $formattedDate)
+        ->orderBy('credit_payments.id', 'desc')
+        ->get();
+    //    echo '<pre>';
+    //    print_r($daybook_search);die();
+        return view('invoice.list_daybook',compact('credit'));
+        }
+    public function Daybook(Request $request){
+        $daybook_search=null;
+            return view('invoice.list_daybook',compact('daybook_search'));
+        }
     function __construct()
     {
         $this->middleware(['permission:tpfiles-list|tpfiles-create|tpfiles-edit|tpfiles-delete'], ['only' => ['list_page']]);
