@@ -187,6 +187,7 @@
                                         <h4 style=color:#F00; font-size:16px font-weight:bold;> NO </h4>
                                         @endif
                                     </td>
+                                    <td><img src="{{asset($views->barcode)}}" alt=""></td>
                                 </tr>
                                 @endforeach
                               

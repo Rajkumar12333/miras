@@ -1,5 +1,5 @@
 <?php
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AplicantController;
@@ -28,6 +28,7 @@ use App\Http\Controllers\ReceiptFileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/generate-qrcode', [AplicantController::class, 'generateAndStore']);
 //receipt file start
 Route::get('receipt-files/{id}/show', [ReceiptFileController::class, 'show'])->name('receipt_files.show');
 Route::get('/receipt-files-add-page', [ReceiptFileController::class, 'add_page'])->name("receipt_files.add_page");

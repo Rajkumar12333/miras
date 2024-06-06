@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Endroid\QrCode\Builder\Builder;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\File;
@@ -19,7 +20,31 @@ use App\Models\Tp_file;
 use App\Models\User;
 class AplicantController extends Controller
 {
-    //
+    //checking purpose
+    public function generateAndStore()
+    {
+        // Define the file path and name
+        $filePath = 'qrcodes/';
+        $fileName = Str::uuid().'.png';
+        $fullPath = public_path($filePath . $fileName);
+
+        // Ensure the directory exists
+        if (!File::exists(public_path($filePath))) {
+            File::makeDirectory(public_path($filePath), 0755, true);
+        }
+
+        // Generate the QR code with specific size
+        $result = Builder::create()
+            ->data('Welcome to Laravel QR Code Generator!')
+            ->size(60)
+            ->margin(0)  // Set margin to 0 to fit the exact size
+            ->build();
+
+        $result->saveToFile($fullPath);
+
+        return response()->json(['message' => 'QR Code generated and stored successfully.', 'path' => $filePath . $fileName]);
+    }
+//checking purpose
     function __construct()
     {
         $this->middleware(['permission:applicant-list|applicant-create|applicant-edit|applicant-delete'], ['only' => ['visa_tracking']]);
@@ -95,6 +120,7 @@ class AplicantController extends Controller
     }
     public function store(Request $request)
     {
+        
         $documents = $request->input('document');
         $file = $request->file('tp_form');
         if(!empty($request->tp_form)){
@@ -110,6 +136,8 @@ class AplicantController extends Controller
     }
         foreach ($documents as $document) {
             
+      
+
         $applicant = new Applicant([
             'name' =>$document['name'],
             'passportno'  => $document['passportno'],
@@ -148,28 +176,36 @@ class AplicantController extends Controller
             'dd'  => $request->dd1,
             'reason'  => $request->reason,
             'internal_reason'  => $request->internal_reason,
-            'barcode'  => $request->barcode,
+            // 'barcode'  => $request->barcode,
             'outstation'  => $request->outstation,
             'number'  => $request->number,
         ]);
         $applicant->save();
 
-        $qrCodeData = $applicant->id;
-        $imageName = 'qrcode-' . time() . '.png';
-        $imagePath = public_path('qrcodes/' . $imageName);
+        $filePath = 'qrcode/uvs/';
+        $fileName = Str::uuid().'.png';
+        $fullPath = public_path($filePath . $fileName);
 
         // Ensure the directory exists
-        if (!File::exists(public_path('qrcodes'))) {
-            File::makeDirectory(public_path('qrcodes'), 0755, true);
+        if (!File::exists(public_path($filePath))) {
+            File::makeDirectory(public_path($filePath), 0755, true);
         }
+        $branchcode=Branch::find($request->location);
+echo $qrcontent=$branchcode->shortname.'-'.$applicant->id;
+        // Generate the QR code with specific size
+        $result = Builder::create()
+            ->data($qrcontent)
+            ->size(60)
+            ->margin(0)  // Set margin to 0 to fit the exact size
+            ->build();
 
-        // Store the QR code image
-        QrCode::format('png')->size(200)->generate($qrCodeData, $imagePath);
+        $result->saveToFile($fullPath);
 
-        // // Save image path to database
-        $qrCodeImage = new Applicant();
-        $qrCodeImage->barcode = 'qrcodes/' . $imageName;
-        $qrCodeImage->save();
+        
+        $qrcode = Applicant::findOrFail($applicant->id);
+        $qrcode->update([
+            'barcode' => $fullPath,
+        ]);
 
         $tp = new Tp_file([
             'track_id' => $applicant->id,
@@ -232,7 +268,7 @@ class AplicantController extends Controller
     // 
 
         // Redirect back with success message
-        return redirect()->back()->with('success', 'Document created successfully.');
+      //  return redirect()->back()->with('success', 'Document created successfully.');
     }
     public function update(Request $request,$id){
         $newName=null;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CountryInfo;
 use App\Models\Country;
@@ -36,6 +37,7 @@ class TpFilesController extends Controller
     ->join('applicants', 'tp_files.track_id', '=', 'applicants.id')
     ->join('agents', 'tp_files.staff_id', '=', 'agents.id')
     ->select('tp_files.*', 'applicants.name', 'applicants.passportno', 'agents.agtname','tp_files.created_on')
+    ->OrderBy('tp_files.id','desc')
     ->paginate(10);
     
         return view('invoice.list_tp_files',compact('tp_files'));
@@ -52,29 +54,42 @@ class TpFilesController extends Controller
     }
     public function store(Request $request)
     {
+        $file = $request->file('receipt_file');
+        if(!empty($request->receipt_file)){
+        if ($file->isValid()) {
+            $userId = Auth::user()->id;
+            $fileExt = $file->getClientOriginalExtension();
+            $randomNumber = Str::random(3);
+            $newName = $userId . '_' . $randomNumber . '.' . $fileExt;
+
+            // Move file to destination
+            $file->move(public_path('androidapp/tp_files'), $newName);
+        }
+    }
         $company = new Tp_file([
-            'countryid' => $request->countryid,
-            'countryinfo' => $request->countryinfo,
-            'embassyinfo' =>$request->embassyinfo,
-            'understanding' => $request->understanding,
+            'track_id' => $request->applicant_id,
+            'staff_id' => $userId,
+            'file_name' =>$newName,
+            'created_on' => now(),
         ]);
         $company->save();
-        return redirect()->route('country_info.view_page')->with('success', 'Record added successfully');
+        return redirect()->route('tpfiles.view_page')->with('success', 'Record added successfully');
     }
-    public function update(Request $request,$id)
-    {
-        $blog = Tp_file::findOrFail($id);
-        $blog->update([
-            'countryid' => $request->countryid,
-            'countryinfo' => $request->countryinfo,
-            'embassyinfo' =>$request->embassyinfo,
-            'understanding' => $request->understanding,
-        ]);
-        return redirect()->route('country_info.view_page')->with('success', 'Record updated successfully');
-    }
+
+    // public function update(Request $request,$id)
+    // {
+    //     $blog = Tp_file::findOrFail($id);
+    //     $blog->update([
+    //         'countryid' => $request->countryid,
+    //         'countryinfo' => $request->countryinfo,
+    //         'embassyinfo' =>$request->embassyinfo,
+    //         'understanding' => $request->understanding,
+    //     ]);
+    //     return redirect()->route('country_info.view_page')->with('success', 'Record updated successfully');
+    // }
     public function destroy(Request $request,$id){
         $agent = Tp_file::findOrFail($id);
         $agent->delete();
-        return redirect()->route('country_info.view_page')->with('success', 'Record deleted successfully');
+        return redirect()->route('tpfiles.view_page')->with('success', 'Record deleted successfully');
     }
 }

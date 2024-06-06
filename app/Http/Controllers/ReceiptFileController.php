@@ -52,7 +52,7 @@ class ReceiptFileController extends Controller
             $newName = $userId . '_' . $randomNumber . '.' . $fileExt;
 
             // Move file to destination
-            $file->move(public_path('androidapp/tp_files'), $newName);
+            $file->move(public_path('androidapp/receipt_images'), $newName);
         }
     }
         $company = new ReceiptFile([
