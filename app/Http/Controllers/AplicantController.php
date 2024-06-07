@@ -120,12 +120,12 @@ class AplicantController extends Controller
     }
     public function store(Request $request)
     {
-        
+        $userId = Auth::user()->id;
         $documents = $request->input('document');
         $file = $request->file('tp_form');
         if(!empty($request->tp_form)){
         if ($file->isValid()) {
-            $userId = Auth::user()->id;
+           
             $fileExt = $file->getClientOriginalExtension();
             $randomNumber = Str::random(3);
             $newName = $userId . '_' . $randomNumber . '.' . $fileExt;
@@ -206,14 +206,17 @@ class AplicantController extends Controller
         $qrcode->update([
             'barcode' => $fullPath,
         ]);
-
-        $tp = new Tp_file([
-            'track_id' => $applicant->id,
-            'staff_id' => $userId,
-            'file_name' => "/androidapp/tp_files/".$newName,
-            
-        ]);
-        $tp->save();
+        if(!empty($request->tp_form)){
+            if ($file->isValid()) {
+                $tp = new Tp_file([
+                    'track_id' => $applicant->id,
+                    'staff_id' => $userId,
+                    'file_name' => "/androidapp/tp_files/".$newName,
+                    
+                ]);
+                $tp->save();
+            }
+        }
             
     
         $user = new Tbl_document([

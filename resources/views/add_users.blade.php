@@ -90,10 +90,9 @@
                             <div class="form-group col-md-12">
                                 <label for="outStationName">Active</label>
                                 <select id="outStationName" class="form-control" name="rights">
-                                    <option value="1">ADMIN</option>
-                                    <option value="0">USER</option>
-                                    <option value="2">OUT STATION USER</option>
-                                    <option value="3">COMPANY USER</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role }}">{{ $role }}</option>
+                                @endforeach
                                 </select>
                             </div>
                         </div>

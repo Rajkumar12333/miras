@@ -39,12 +39,71 @@
     </div>
 </div>
 <!-- End Breadcrumbbar -->
+<!-- Start Contentbar -->
+<!-- <div class="contentbar">
+<div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
+    <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
+        <h4>Filter By</h4><a href="javascript:void(0)" id="infobar-settings-close" class="infobar-settings-close"><img
+                src="{{asset('assets/images/svg-icon/close.svg')}}" class="img-fluid menu-hamburger-close" alt="close"></a>
+    </div>
+    <div class="infobar-settings-sidebar-body">
+        <div class="custom-mode-setting">
+            <form method="POST" action="{{route('visa_tracking.filter')}}">
+                @csrf
 
+                <div class="form-row p-3">
+
+                <div class="form-group col-md-12">
+                        <label for="country">File Type:</label>
+                        <select name="country" class="form-control" onchange="c(this)" style="">
+                            <option value="">Select your Country</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="agentName">Agent Name</label>
+                        <select name="agtid" class="form-control" onchange="t(this)">
+                       
+                            <option value="">Select your Agent name</option>
+                          
+                        </select>
+                    </div>
+                   
+                    <div class="form-group col-md-12">
+                        <label for="internal-remarks">Refrence Id</label>
+                        <input type="text" class="form-control" id="Refrence" name="id" placeholder="Refrence Id">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="internal-remarks">PassPort No</label>
+                        <input type="text" class="form-control" id="PassPort" name="passportno" placeholder="PassPort No">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="internal-remarks">Applicant Name:</label>
+                        <input type="text" class="form-control" id="Applicant" name="name"
+                            placeholder="Applicant Name">
+                    </div>
+                    <div class="form-group col-md-12" style="display: flex; align-items: flex-end;">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="infobar-settings-sidebar-overlay"></div> -->
     <!-- Start row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="card m-b-30">
                 </div>
+                <!-- <div class="card-header">
+                   
+                   <div class="d-flex">
+                   <a href="javascript:void(0)" id="infobar-settings-open" style="display: flex; align-items: center;" >
+                   <h5>Filter</h5> <img class="infobar-icon" src="assets/images/svg-icon/settings.svg" class="img-fluid" alt="settings">
+               </a>
+               </div>
+               </div> -->
                 <div class="card-body">
                 <h5 class="card-title">Receipt Files Table</h5>
                     <div class="table-responsive">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash; 
@@ -17,11 +18,15 @@ class UserPageController extends Controller
         $this->middleware(['permission:users-delete'], ['only' => ['destroy']]);
     }
     public function add_page(Request $request){
-        return view("add_users");
+        $roles = Role::pluck('name','name')->all();
+        return view("add_users",compact('roles'));
     }
     public function edit_page(Request $request,$id){
+        $roles = Role::all()->pluck('name');
+        
+        $userRoles = User::find($id)->roles->pluck('name')->toArray(); //
         $edit = User::findOrFail($id);
-        return view("edit_user",compact('edit'));
+        return view("edit_user",compact('edit','roles','userRoles'));
     }
     public function view_page(Request $request){
         $users = User::orderBy('createdon', 'desc')->paginate(10);
@@ -47,13 +52,14 @@ class UserPageController extends Controller
             'userid'  => $request->userid,
             'password'=>Hash::make($request->password),
             'branchid'=>$request->branchid,
-            'adminRight'=>$request->rights,
+            // 'adminRight'=>$request->rights,
             'passwd'=>Hash::make($request->password),
             'email'=>$request->userid,
             'createdon'=>now(),
             'createdby'=>Auth::user()->id
         ]);
         $user->save();
+        $user->assignRole($request->rights);
         return redirect()->route('user.view_page')->with('success', 'Record Added successfully');
     }
     public function destroy(Request $request,$id){
@@ -62,20 +68,21 @@ class UserPageController extends Controller
         return redirect()->route('user.view_page')->with('success', 'Record deleted successfully');
     }
     public function update(Request $request,$id){
-        $blog = User::findOrFail($id);
-        $blog->update([
+        $user = User::findOrFail($id);
+        $user->update([
             'name' =>$request->name,
             'mailid'  =>$request->mail_id,
             'userid'  => $request->userid,
             // 'password'=>Hash::make($request->password),
             'branchid'=>$request->branchid,
-            'adminRight'=>$request->rights,
+            // 'adminRight'=>$request->rights,
             // 'passwd'=>Hash::make($request->password),
             'email'=>$request->userid,
             // 'createdon'=>now(),
             // 'createdby'=>Auth::user()->id
 
         ]);
+        $user->assignRole($request->rights);
         return redirect()->route('user.view_page')->with('success', 'Record Added successfully');
     }
 

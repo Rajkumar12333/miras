@@ -90,10 +90,9 @@
                             <div class="form-group col-md-12">
                                 <label for="outStationName">Active</label>
                                 <select id="outStationName" class="form-control" name="rights">
-                                    <option  @if($edit->adminRight=="1") selected @endif value="1">ADMIN</option>
-                                    <option  @if($edit->adminRight=="0") selected @endif value="0">USER</option>
-                                    <option  @if($edit->adminRight=="2") selected @endif value="2">OUT STATION USER</option>
-                                    <option   @if($edit->adminRight=="3") selected @endif value="3">COMPANY USER</option>
+                                @foreach ($roles as $role)
+        <option value="{{ $role }}" {{ in_array($role, $userRoles) ? 'selected' : '' }}>{{ $role }}</option>
+    @endforeach
                                 </select>
                             </div>
                         </div>

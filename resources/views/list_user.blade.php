@@ -53,17 +53,11 @@
                                             <td>{{$user->userid}}</td>
                                             <td>{{$user->mailid}}	</td>
                                              <td>
-                                                @if($user->adminRight==1)
-                                                ADMIN
-                                                @elseif($user->adminRight==0)
-                                                USERS
-                                                @elseif($user->adminRight==2)
-                                                OUT STATION USER
-                                                @elseif($user->adminRight==3)
-                                                COMPANY USER
-                                                @else
-
-                                                @endif
+                                             @if(!empty($user->getRoleNames()))
+                                                @foreach($user->getRoleNames() as $v)
+                                                <label class="badge badge-secondary text-dark">{{ $v }}</label>
+                                                @endforeach
+                                            @endif
 
                                             </td>
                                              <td>

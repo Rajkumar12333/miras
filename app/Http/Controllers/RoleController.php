@@ -32,15 +32,34 @@ class RoleController extends Controller
         return view('roles.create', compact('permission'));
     }
 
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'name' => 'required|unique:roles,name',
+    //         'permission' => 'required',
+    //     ]);
+
+    //     $role = Role::create(['name' => $request->input('name')]);
+    //     $role->syncPermissions($request->input('permission'));
+
+    //     return redirect()->route('roles.index')
+    //         ->with('success', 'Role created successfully');
+    // }
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            'permission' => 'required|array', // Ensure permission is an array
+            'permission.*' => 'exists:permissions,id', // Ensure each permission exists
         ]);
 
         $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
+
+        // Convert permission IDs to their corresponding names
+        $permissions = Permission::whereIn('id', $request->input('permission'))->pluck('name');
+
+        // Sync permissions using the names
+        $role->syncPermissions($permissions);
 
         return redirect()->route('roles.index')
             ->with('success', 'Role created successfully');
@@ -84,37 +103,25 @@ class RoleController extends Controller
     //         ->with('success', 'Role updated successfully');
     // }
     public function update(Request $request, $id)
-{
-    // Fetch all valid permissions from the database
-    $validPermissions = Permission::pluck('name')->toArray();
-
-    // Validate the incoming request data
-    $this->validate($request, [
-        'name' => 'required|string|max:255',
-        'permission' => 'required|array',
-        'permission.*' => ['required', 'string'],  // Ensure each permission exists by name
-    ]);
-
-    // Find the role by ID
-    $role = Role::find($id);
-
-    if (!$role) {
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required|array', // Ensure permission is an array
+            'permission.*' => 'exists:permissions,id', // Ensure each permission exists
+        ]);
+    
+        $role = Role::findOrFail($id); // Use findOrFail to handle non-existing roles gracefully
+    
+        $role->name = $request->input('name');
+        $role->save();
+    
+        // Convert permission IDs to their corresponding names
+        $permissions = Permission::whereIn('id', $request->input('permission'))->pluck('name');
+        $role->syncPermissions($permissions);
+    
         return redirect()->route('roles.index')
-            ->with('error', 'Role not found');
+            ->with('success', 'Role updated successfully');
     }
-
-    // Update the role's name
-    $role->name = $request->input('name');
-    $role->save();
-
-    // Sync the permissions
-    $permissions = $request->input('permission');
-    $role->syncPermissions($permissions);
-
-    // Redirect back to the roles index with a success message
-    return redirect()->route('roles.index')
-        ->with('success', 'Role updated successfully');
-}
 
     public function destroy($id)
     {

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\CountryInfo;
 use App\Models\Country;
 use App\Models\Tp_file;
+use App\Models\Bill;
 class TpFilesController extends Controller
 {
     //
@@ -26,8 +27,13 @@ class TpFilesController extends Controller
         ->where('credit_payments.date', '=', $formattedDate)
         ->orderBy('credit_payments.id', 'desc')
         ->get();
-    //    echo '<pre>';
-    //    print_r($daybook_search);die();
+   
+        $debit = Bill::leftJoin('cards', 'cards.card', '=', 'bills.visa_method')
+             ->select('cards.name as card_name', 'bills.*')
+             ->where('bills.date', $formattedDate)
+             ->orderBy('bills.id', 'desc')
+             ->get();
+             print_r($debit);die();
         return view('invoice.list_daybook',compact('credit'));
         }
     public function Daybook(Request $request){

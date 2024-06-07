@@ -20,7 +20,8 @@
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 <!-- include libraries(jQuery, bootstrap) -->
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- include summernote css/js -->
@@ -79,43 +80,66 @@
                 <!-- End Logobar -->
                 <!-- Start Navigationbar -->
                 <div class="navigationbar">
+                @php
+                $user = Auth::user(); 
+                @endphp
+                @if (!empty($user->getRoleNames()))
+                @foreach ($user->getRoleNames() as $role)
+                  
                     <ul class="vertical-menu">
+                    @if ($role === 'admin' || $role === 'agent')
                         <li>
                             <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fa-solid fa-house"></i>
+                              <span>Dashboard</span>
                             </a>
                             
                         </li>
+                        @endif
+                        @if ($role === 'admin' )
                         <li>
                             <a href="{{ route('user.view_page') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Users</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fa-solid fa-user"></i>
+                              <span>Users</span>
                             </a>
                             
                         </li>
+                        @endif
+                        @if ($role === 'admin' || $role === 'agent')
                         <li>
                             <a href="{{ route('visa_tracking') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Tracking</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-map-marker-alt"></i>
+                              <span>Visa Tracking</span>
                             </a>
                             
                         </li>
+                        @endif
+                        @if ($role === 'admin')
                         <li>
                             <a href="javaScript:void();">
-                                <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"><span>Accounts Department</span><i class="feather icon-chevron-right pull-right"></i>
+                                <!-- <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"> -->
+                                <i class="fa-solid fa-file-invoice"></i>
+                                <span>Accounts Department</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="{{ route('invoice.view_page') }}">Invoice List</a></li>
                                 <li><a href="{{ route('submission.view_page') }}">Submission List</a></li>
-                                <li><a href="javaScript:void();">Visa Fees</a></li>
+                                <li><a href="{{ route('bill_payment.add_page') }}">Visa Fees</a></li>
                                 <li><a href="{{route('credit_payment.list_page')}}">Payment</a></li>
                                 <li><a href="{{route('allowance.list_page')}}">Allowances</a></li>
-                                <li><a href="javaScript:void();">Day Book</a></li>
+                                <li><a href="{{route('daybook')}}">Day Book</a></li>
                                 <li><a href="{{route('receipt_files.view_page')}}">Receipt Files</a></li>
                                 <li><a href="{{route('tpfiles.view_page')}}">TP Files</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                                <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"><span>Mail</span><i class="feather icon-chevron-right pull-right"></i>
+                                <!-- <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"> -->
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>Mail</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="{{ route('update_mail') }}">Update Mail</a></li>
@@ -125,7 +149,9 @@
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                                <img src="{{ asset('assets/images/svg-icon/advanced.svg') }}" class="img-fluid" alt="advanced"><span>Agent</span><i class="feather icon-chevron-right pull-right"></i>
+                                <!-- <img src="{{ asset('assets/images/svg-icon/advanced.svg') }}" class="img-fluid" alt="advanced"> -->
+                                <i class="fas fa-user-secret"></i>
+                                <span>Agent</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">                                
                                 <li><a href="{{ route('agent.add_page') }}">Add Agent</a></li>  
@@ -133,24 +159,32 @@
                         </li>
                         <li>
                             <a href="{{ route('news') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>News</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fa-regular fa-newspaper"></i>
+                              <span>News</span>
                             </a>
                             
                         </li>
                         <li>
                             <a href="{{ route('visa_form') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Form</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-file-alt"></i>
+                              <span>Visa Form</span>
                             </a>
                             
                         </li>
                         <li>
                             <a href="{{ route('visa_info') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Info</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-info-circle"></i>
+                              <span>Visa Info</span>
                             </a>
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Visa Requests</span><i class="feather icon-chevron-right pull-right"></i>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-passport"></i>
+                              <span>Visa Requests</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="javaScript:void();">Sample Docs</a></li>
@@ -158,27 +192,37 @@
                         </li>
                         <li>
                             <a href="{{ route('country_info.view_page') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Country Info</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-globe"></i>
+                              <span>Country Info</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('company_info.view_page') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Company Info</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-building"></i>
+                              <span>Company Info</span>
                             </a>
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Holidays</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-sun"></i>
+                              <span>Holidays</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('add_ticker') }}">
-                              <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Ticker</span>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"> -->
+                              <i class="fas fa-chart-line"></i>
+                              <span>Ticker</span>
                             </a>
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                              <img src="{{ asset('assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Other Services</span><i class="feather icon-chevron-right pull-right"></i>
+                              <!-- <img src="{{ asset('assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"> -->
+                              <i class="fas fa-cogs"></i>
+                              <span>Other Services</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="{{ route('interview') }}">Interview</a></li>
@@ -188,8 +232,11 @@
                                 <li><a href="{{ route('courier') }}">Courier Tab</a></li>
                             </ul>
                         </li>
-                                                                
+                        @endif                                         
                     </ul>
+                          
+                        @endforeach
+                    @endif
                 </div>
                 <!-- End Navigationbar -->
             </div>
